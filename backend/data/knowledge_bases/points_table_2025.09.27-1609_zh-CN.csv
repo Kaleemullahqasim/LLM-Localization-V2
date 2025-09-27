@@ -1,0 +1,32 @@
+Rule ID,Macro Class,Micro Class,Rule Text,Severity,Weight,Section
+ZH-CN-000-F56739C9,Style,Major,"Before reusing any TM match, consider the context.",Major,1,1 > 2
+ZH-CN-001-459995B5,Terminology,must,"If you have not been provided with information about the audience and can’t tell from a quick overview of the document at hand, make sure to research it and ask before starting to translate.",Minor,4,2 > 1 > 2
+ZH-CN-002-77FE9DB2,Style,should,"Then, try to familiarize yourself with the local marketing tone and style for that specific audience.",Minor,1,2 > 1 > 2
+ZH-CN-003-24003194,Mechanics,must,Home cards are pieces of information that merchants see in the central part of their Shopify admin as soon as they access it.,Minor,3,2 > 1 > 3
+ZH-CN-004-9F67B2F4,Mechanics,Major,The document section path must be in the format 2 > 1 > 3 > 4.,Minor,3,2 > 1 > 3 > 4
+ZH-CN-005-B0BEE2FE,Style,Major,The text must use the specified document section path (2 > 1 > 3 > 4) for localization.,Major,1,2 > 1 > 3 > 4
+ZH-CN-006-56AD77D9,Style,Minor,Avoid long sentences and more than two '的' in one sentence.,Minor,1,2 > 4 > 3
+ZH-CN-007-00307B65,Style,Minor,Use variable sentence structure to improve readability.,Minor,1,2 > 4 > 3
+ZH-CN-008-6C3D70A5,Style,must,Chinese characters should not be capitalized,Minor,1,2 > 2
+ZH-CN-009-EB9C19B0,Style,should,English proper nouns should be capitalized,Minor,1,2 > 2
+ZH-CN-010-5166ABF6,Terminology,Major,Translate job titles and team names in running text and do not translate them in signatures.,Minor,4,2 > 2
+ZH-CN-011-5B0E656F,Punctuation,Minor,"Avoid using punctuation such as periods, commas, or semicolons.",Minor,2,2 > 2
+ZH-CN-012-958BFEB2,Style,Major,must,Minor,1,2 > 2
+ZH-CN-013-BEA1EE24,Style,Minor,should,Minor,1,2 > 2
+ZH-CN-014-E9C4B0C6,Style,Major,must,Minor,1,2 > 2
+ZH-CN-015-D72B9798,Style,Minor,should,Minor,1,2 > 2
+ZH-CN-016-60277EEF,Style,Major,must,Minor,1,2 > 2
+ZH-CN-017-4C947F88,Style,Minor,should,Minor,1,2 > 2
+ZH-CN-018-89CCAABB,Punctuation,Major,"If commas are used to separate keywords, always use single-byte commas because they function as operators.",Major,2,2 > 2
+ZH-CN-019-61BFC168,Style,Major,must,Minor,1,2 > 2
+ZH-CN-020-D3740349,Style,Minor,should,Minor,1,2 > 2
+ZH-CN-021-341D9C0E,Mechanics,Major,must use the format '纽约-上海' for the document section path 2 > 3,Major,3,2 > 3
+ZH-CN-022-328C5DA9,Terminology,Major,Do not translate third-party product names unless they are specified by Shopify.,Minor,4,2 > 2
+ZH-CN-023-F873E471,Style,Minor,should be very cautious when it comes to ethnicity,Minor,1,2 > 2
+ZH-CN-024-DD9296FF,Terminology,Minor,shall not be used in the Simplified Chinese translation,Minor,4,2 > 2
+ZH-CN-025-08C8F2C4,Terminology,Minor,avoid using the term '华社新闻报道中的禁用词',Minor,4,2 > 2
+ZH-CN-026-FDB4BBDE,Terminology,Minor,Text in angle brackets should not be translated unless otherwise instructed.,Minor,4,2 > 1 > 3
+ZH-CN-027-BE4BD64E,Mechanics,Minor,Please make sure to check any project specific information.,Minor,3,2 > 1 > 3
+ZH-CN-028-1BE7E60A,Terminology,Minor,Text in square brackets is generally left untranslated but there might be cases when it’s OK to translate. Please make sure to check any project specific information and consider the context.,Minor,4,2 > 1 > 3
+ZH-CN-029-271B55CE,Style,positive,"UI texts should be clear, concise, and consistent.",Minor,1,2 > 3
+ZH-CN-030-DAEA5881,Terminology,positive,"When you encounter a UI (user interface) item, make sure to check if it has been already translated to keep consistency.",Minor,4,2 > 3

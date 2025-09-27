@@ -1,0 +1,59 @@
+{
+  "job_id": "50d1f507-6259-4941-aed9-fc99dcb0ce5e",
+  "kb_version": "2025.09.27-1605",
+  "rubric_version": "2025.09.27-1605",
+  "model_prompt_version": "1.0.0",
+  "final_score": 88,
+  "findings": [
+    {
+      "segment_id": "seg_35465895",
+      "rule_id": "ZH-CN-000-CB5526E3",
+      "severity": "Minor",
+      "penalty": 4,
+      "justification": "Half-width '!' found; should use full-width '！' in Chinese.",
+      "citation": {
+        "section_path": [
+          "2"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "deterministic": true,
+      "span_start": 11,
+      "span_end": 12,
+      "highlighted_text": "!"
+    },
+    {
+      "segment_id": "seg_50d1f507-6259-4941-aed9-fc99dcb0ce5e",
+      "rule_id": "ZH-CN-002-67EC6CBD",
+      "severity": "Major",
+      "penalty": 8,
+      "justification": "The target translation uses 'Shopify' in uppercase, which is not allowed under the rule that prohibits translating 'Shopify'. The original text is 'Welcome to Shopify!', and the target translation is '欢迎使用Shopify!'. The rule specifies that 'Shopify' should not be translated, so using it in uppercase is a violation.",
+      "citation": {
+        "section_path": [
+          "2"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "deterministic": false,
+      "span_start": 12,
+      "span_end": 16,
+      "highlighted_text": "Shopify"
+    }
+  ],
+  "by_macro": {
+    "Style": {
+      "penalty": 12,
+      "count": 2,
+      "rules_triggered": [
+        "ZH-CN-000-CB5526E3",
+        "ZH-CN-002-67EC6CBD"
+      ]
+    }
+  },
+  "source_text": "Welcome to Shopify!",
+  "target_text": "欢迎使用Shopify!",
+  "locale": "zh-CN",
+  "created_at": "2025-09-27 08:05:43.559008"
+}

@@ -1,0 +1,40 @@
+{
+  "job_id": "1d16d136-f93a-4fc1-a3e3-b8c38f306703",
+  "kb_version": "2025.09.27-1609",
+  "rubric_version": "2025.09.27-1609",
+  "model_prompt_version": "1.0.0",
+  "final_score": 92,
+  "findings": [
+    {
+      "segment_id": "seg_1d16d136-f93a-4fc1-a3e3-b8c38f306703",
+      "rule_id": "ZH-CN-002-67EC6CBD",
+      "severity": "Major",
+      "penalty": 8,
+      "justification": "The translation '你好世界' translates 'Hello world' to Chinese, which is a valid translation. However, the rule prohibits translating 'Shopify', but this is not applicable here as it's a general translation of a greeting. The rule is about not translating 'Shopify', which is not the case here.",
+      "citation": {
+        "section_path": [
+          "2"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "deterministic": false,
+      "span_start": 0,
+      "span_end": 4,
+      "highlighted_text": "你好世界"
+    }
+  ],
+  "by_macro": {
+    "Style": {
+      "penalty": 8,
+      "count": 1,
+      "rules_triggered": [
+        "ZH-CN-002-67EC6CBD"
+      ]
+    }
+  },
+  "source_text": "Hello world",
+  "target_text": "你好世界",
+  "locale": "zh-CN",
+  "created_at": "2025-09-27 08:15:29.124869"
+}

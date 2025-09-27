@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+pydantic
+python-multipart
+python-dotenv
+httpx
+numpy
+pandas
+python-docx
+PyPDF2
+beautifulsoup4
+markdown
+scikit-learn
+aiofiles
+jinja2

@@ -1,0 +1,59 @@
+{
+  "job_id": "cc181653-9ff6-4585-8198-b3da77a51ff5",
+  "kb_version": "2025.09.27-1605",
+  "rubric_version": "2025.09.27-1605",
+  "model_prompt_version": "1.0.0",
+  "final_score": 88,
+  "findings": [
+    {
+      "segment_id": "seg_-5759967",
+      "rule_id": "ZH-CN-000-CB5526E3",
+      "severity": "Minor",
+      "penalty": 4,
+      "justification": "Half-width '!' found; should use full-width '！' in Chinese.",
+      "citation": {
+        "section_path": [
+          "2"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "deterministic": true,
+      "span_start": 10,
+      "span_end": 11,
+      "highlighted_text": "!"
+    },
+    {
+      "segment_id": "seg_cc181653-9ff6-4585-8198-b3da77a51ff5",
+      "rule_id": "ZH-CN-002-67EC6CBD",
+      "severity": "Major",
+      "penalty": 8,
+      "justification": "The target translation '欢迎使Shopify!' contains the word '使' which is not allowed in this rule. The rule prohibits translating 'Shopify' and the translation here uses '使' which is a verb meaning 'to make', thus violating the rule.",
+      "citation": {
+        "section_path": [
+          "2"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "deterministic": false,
+      "span_start": 0,
+      "span_end": 5,
+      "highlighted_text": "欢迎使Shopify!"
+    }
+  ],
+  "by_macro": {
+    "Style": {
+      "penalty": 12,
+      "count": 2,
+      "rules_triggered": [
+        "ZH-CN-000-CB5526E3",
+        "ZH-CN-002-67EC6CBD"
+      ]
+    }
+  },
+  "source_text": "Welcome to Shopify!",
+  "target_text": "欢迎使Shopify!",
+  "locale": "zh-CN",
+  "created_at": "2025-09-27 08:54:13.477422"
+}

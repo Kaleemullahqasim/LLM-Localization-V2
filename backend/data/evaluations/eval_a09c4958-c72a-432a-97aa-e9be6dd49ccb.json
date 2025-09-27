@@ -1,0 +1,40 @@
+{
+  "job_id": "a09c4958-c72a-432a-97aa-e9be6dd49ccb",
+  "kb_version": "2025.09.27-1609",
+  "rubric_version": "2025.09.27-1609",
+  "model_prompt_version": "1.0.0",
+  "final_score": 92,
+  "findings": [
+    {
+      "segment_id": "seg_a09c4958-c72a-432a-97aa-e9be6dd49ccb",
+      "rule_id": "ZH-CN-002-67EC6CBD",
+      "severity": "Major",
+      "penalty": 8,
+      "justification": "The target translation uses 'Shopify' without any modification, which violates the rule that prohibits translating 'Shopify'.",
+      "citation": {
+        "section_path": [
+          "2"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "deterministic": false,
+      "span_start": 0,
+      "span_end": 5,
+      "highlighted_text": "Shopify"
+    }
+  ],
+  "by_macro": {
+    "Style": {
+      "penalty": 8,
+      "count": 1,
+      "rules_triggered": [
+        "ZH-CN-002-67EC6CBD"
+      ]
+    }
+  },
+  "source_text": "Welcome to Shopify!",
+  "target_text": "欢迎使用Shopify!",
+  "locale": "zh-CN",
+  "created_at": "2025-09-27 08:53:35.031646"
+}
