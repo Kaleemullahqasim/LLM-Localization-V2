@@ -1,0 +1,13 @@
+{
+  "job_id": "0b53d86f-8c3b-4c28-8631-b7f7808db2a0",
+  "kb_version": "2025.10.01-1155",
+  "rubric_version": "2025.10.01-1155",
+  "model_prompt_version": "1.0.0",
+  "final_score": 100,
+  "findings": [],
+  "by_macro": {},
+  "source_text": "you ",
+  "target_text": "你",
+  "locale": "zh-CN",
+  "created_at": "2025-10-01 07:42:18.863134"
+}

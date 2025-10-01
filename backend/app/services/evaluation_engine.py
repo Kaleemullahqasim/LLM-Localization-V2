@@ -9,6 +9,7 @@ from ..models import (
     ScoreReport, Finding, ScoreBreakdown, Rule, Severity, Citation,
     MacroClass
 )
+from ..config import config
 from .lm_studio_client import LMStudioClient
 from .embedding_service import EmbeddingService
 from .deterministic_validators import DeterministicValidators
@@ -21,14 +22,14 @@ class EvaluationEngine:
         self.embedding_service = EmbeddingService()
         self.validators = DeterministicValidators()
         
-        # Scoring configuration
+        # Scoring configuration from centralized config
         self.severity_multipliers = {
-            Severity.MINOR: 1,
-            Severity.MAJOR: 2,
-            Severity.CRITICAL: 3
+            Severity.MINOR: config.SEVERITY_MULTIPLIER_MINOR,
+            Severity.MAJOR: config.SEVERITY_MULTIPLIER_MAJOR,
+            Severity.CRITICAL: config.SEVERITY_MULTIPLIER_CRITICAL
         }
         
-        self.style_punctuation_cap = 30  # Max deduction for style/punctuation
+        self.style_punctuation_cap = config.STYLE_PUNCTUATION_CAP
         
     async def evaluate(
         self, 
@@ -63,7 +64,8 @@ class EvaluationEngine:
         candidate_rules = await self.embedding_service.hybrid_search(
             query_text=query_text,
             top_k=20,
-            locale=locale
+            locale=locale,
+            kb_version=kb['kb_version']
         )
         print(f"Retrieved {len(candidate_rules)} candidate rules")
         
@@ -112,8 +114,7 @@ class EvaluationEngine:
         score_report = await self._calculate_score(
             job_id=job_id,
             findings=all_findings,
-            kb_version=kb['kb_version'],
-            rubric_version=kb['rubric_version'],
+            kb=kb,
             source_text=source_text,
             target_text=target_text,
             locale=locale
@@ -127,7 +128,7 @@ class EvaluationEngine:
     
     async def _load_knowledge_base(self, locale: str, kb_version: Optional[str] = None) -> Optional[Dict[str, Any]]:
         """Load knowledge base from disk"""
-        kb_dir = "data/knowledge_bases"
+        kb_dir = os.path.join(config.DATA_DIR, "knowledge_bases")
         
         if not os.path.exists(kb_dir):
             return None
@@ -159,6 +160,17 @@ class EvaluationEngine:
                 if isinstance(rule_dict.get('created_at'), str):
                     rule_dict['created_at'] = datetime.fromisoformat(rule_dict['created_at'].replace('Z', '+00:00'))
                 
+                # Convert string enums back to enum objects
+                if isinstance(rule_dict.get('macro_class'), str):
+                    rule_dict['macro_class'] = MacroClass(rule_dict['macro_class'])
+                
+                if isinstance(rule_dict.get('default_severity'), str):
+                    rule_dict['default_severity'] = Severity(rule_dict['default_severity'])
+                
+                # Convert citation dict back to Citation object
+                if isinstance(rule_dict.get('citation'), dict):
+                    rule_dict['citation'] = Citation(**rule_dict['citation'])
+                
                 rule = Rule(**rule_dict)
                 rules.append(rule)
             
@@ -167,14 +179,15 @@ class EvaluationEngine:
             
         except Exception as e:
             print(f"Error loading KB {kb_file}: {e}")
+            import traceback
+            traceback.print_exc()
             return None
     
     async def _calculate_score(
         self,
         job_id: str,
         findings: List[Finding],
-        kb_version: str,
-        rubric_version: str,
+        kb: Dict[str, Any],
         source_text: str,
         target_text: str,
         locale: str
@@ -185,10 +198,18 @@ class EvaluationEngine:
         total_penalty = 0
         by_macro = {}
         
+        # Build rule lookup for macro class mapping
+        rule_lookup = {rule.rule_id: rule for rule in kb['rules']}
+        
         # Group findings by macro class
         for finding in findings:
-            # Determine macro class from rule_id or use default logic
-            macro_class = self._get_macro_class_from_finding(finding)
+            # Get macro class from the actual rule object
+            rule = rule_lookup.get(finding.rule_id)
+            if rule:
+                macro_class = rule.macro_class.value
+            else:
+                # Fallback to heuristic if rule not found
+                macro_class = self._get_macro_class_from_finding(finding)
             
             if macro_class not in by_macro:
                 by_macro[macro_class] = {
@@ -230,9 +251,9 @@ class EvaluationEngine:
         
         return ScoreReport(
             job_id=job_id,
-            kb_version=kb_version,
-            rubric_version=rubric_version,
-            model_prompt_version="1.0.0",  # MVP version
+            kb_version=kb['kb_version'],
+            rubric_version=kb['rubric_version'],
+            model_prompt_version=config.MODEL_PROMPT_VERSION,
             final_score=final_score,
             findings=findings,
             by_macro=score_breakdown,
@@ -260,7 +281,7 @@ class EvaluationEngine:
     
     async def _save_evaluation(self, score_report: ScoreReport):
         """Save evaluation results to disk"""
-        eval_dir = "data/evaluations"
+        eval_dir = os.path.join(config.DATA_DIR, "evaluations")
         os.makedirs(eval_dir, exist_ok=True)
         
         eval_file = os.path.join(eval_dir, f"eval_{score_report.job_id}.json")

@@ -4,6 +4,7 @@ import uuid
 from typing import Dict, Any, List
 from datetime import datetime
 
+from ..config import config
 from ..models import (
     ReviewOverrideRequest, FeedbackEvent, FeedbackAction, 
     ScoreReport, Finding, Severity
@@ -13,7 +14,7 @@ class ReviewService:
     """Service for handling reviewer overrides and feedback"""
     
     def __init__(self):
-        self.feedback_dir = "data/feedback"
+        self.feedback_dir = os.path.join(config.DATA_DIR, "feedback")
         os.makedirs(self.feedback_dir, exist_ok=True)
     
     async def process_override(self, request: ReviewOverrideRequest) -> FeedbackEvent:
@@ -88,7 +89,7 @@ class ReviewService:
     async def _find_evaluation_by_finding(self, finding_id: str) -> Dict[str, Any]:
         """Find evaluation that contains the specified finding"""
         
-        eval_dir = "data/evaluations"
+        eval_dir = os.path.join(config.DATA_DIR, "evaluations")
         if not os.path.exists(eval_dir):
             return None
         
@@ -183,7 +184,7 @@ class ReviewService:
         file_path = evaluation.get('_file_path')
         if not file_path:
             # Create new file
-            eval_dir = "data/evaluations"
+            eval_dir = os.path.join(config.DATA_DIR, "evaluations")
             job_id = evaluation.get('job_id', str(uuid.uuid4()))
             file_path = os.path.join(eval_dir, f"eval_{job_id}.json")
         

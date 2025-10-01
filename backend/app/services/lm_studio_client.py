@@ -1,24 +1,21 @@
 import requests
 import httpx
 import json
-import os
 from typing import List, Dict, Any, Optional
-from dotenv import load_dotenv
-
-load_dotenv()
+from ..config import config
 
 class LMStudioClient:
     def __init__(self):
-        self.chat_base_url = os.getenv("CHAT_BASE_URL", "http://localhost:1234/v1")
-        self.embed_base_url = os.getenv("EMBED_BASE_URL", "http://127.0.0.1:1234/v1")
-        self.chat_model = os.getenv("CHAT_MODEL", "qwen/qwen3-1.7b")
-        self.embed_model = os.getenv("EMBED_MODEL", "text-embedding-nomic-embed-text-v1.5")
+        self.chat_base_url = config.CHAT_BASE_URL
+        self.embed_base_url = config.EMBED_BASE_URL
+        self.chat_model = config.CHAT_MODEL
+        self.embed_model = config.EMBED_MODEL
         
     async def chat_completion(
         self, 
         messages: List[Dict[str, str]], 
         temperature: float = 0.1,
-        max_tokens: int = 200,
+        max_tokens: int = 2000,
         response_format: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
         """Make a chat completion request to LM Studio"""
@@ -34,12 +31,12 @@ class LMStudioClient:
             payload["response_format"] = response_format
         
         try:
-            # Use requests instead of httpx for better compatibility
+            # Use requests instead of httpx - httpx has connection issues with LM Studio
             response = requests.post(
                 f"{self.chat_base_url}/chat/completions",
                 headers={"Content-Type": "application/json"},
                 json=payload,
-                timeout=60
+                timeout=120
             )
             
             if response.status_code != 200:
@@ -60,7 +57,7 @@ class LMStudioClient:
         except requests.exceptions.ConnectionError as e:
             raise Exception(f"Cannot connect to LM Studio at {self.chat_base_url}. Is LM Studio running?")
         except requests.exceptions.Timeout as e:
-            raise Exception(f"Request to LM Studio timed out")
+            raise Exception(f"Request to LM Studio timed out (120s). Try a smaller model or reduce text length.")
         except Exception as e:
             raise Exception(f"LM Studio chat request failed: {str(e)}")
     
@@ -95,12 +92,11 @@ class LMStudioClient:
     async def extract_rules_from_text(self, document_snippet: str, section_path: List[str]) -> List[Dict[str, Any]]:
         """Use LLM to extract atomic rules from a document snippet"""
         
-        # JSON schema for rule extraction
+        # JSON schema for LM Studio (no strict mode)
         rule_schema = {
             "type": "json_schema",
             "json_schema": {
                 "name": "extracted_rules",
-                "strict": True,
                 "schema": {
                     "type": "object",
                     "properties": {
@@ -122,29 +118,53 @@ class LMStudioClient:
                                     "severity_cue": {"type": "string"},
                                     "regex_candidate": {"type": "boolean"}
                                 },
-                                "required": ["rule_text", "micro_class", "examples_pos", "examples_neg", "severity_cue", "regex_candidate"],
-                                "additionalProperties": False
+                                "required": ["rule_text", "micro_class", "examples_pos", "examples_neg", "severity_cue", "regex_candidate"]
                             }
                         }
                     },
-                    "required": ["rules"],
-                    "additionalProperties": False
+                    "required": ["rules"]
                 }
             }
         }
         
-        system_prompt = """You are a localization expert extracting translation quality rules from style guide documents.
+        system_prompt = """You are extracting TRANSLATION RULES from a style guide written in ENGLISH that tells translators how to translate TO another language.
 
-Your task: Extract atomic, actionable rules from the given text snippet.
+WHAT TO EXTRACT:
+- Rules that tell translators WHAT TO DO or NOT DO (e.g., "Use full-width punctuation", "Do not translate product names", "Be concise")
+- Rules about the TARGET LANGUAGE (what the translation should look like)
+- Rules with words like: must, should, never, always, do not, avoid, required, recommended
 
-Guidelines:
-1. Each rule should be ONE specific, testable requirement
-2. Focus on rules with clear cues like "must", "never", "should", "avoid", "use", "don't"
-3. Extract positive and negative examples when available
-4. Identify if the rule could be checked with regex (punctuation, formatting, simple patterns)
-5. Classify the severity cue (must/never = "Major", should/avoid = "Minor", prefer = "Minor")
+WHAT NOT TO EXTRACT:
+- Examples of translations (Chinese, Japanese, etc. text samples)
+- Background information about the company
+- Process instructions (JIRA, SharePoint, workflow)
+- General context without actionable rules
 
-Output format: JSON with extracted rules array."""
+RULE_TEXT MUST BE:
+- Written in ENGLISH (the language of the guide)
+- A clear instruction or requirement
+- About HOW to translate, not WHAT was translated
+
+EXAMPLES format should be:
+- examples_pos: Small examples of CORRECT usage (if mentioned)
+- examples_neg: Small examples of WRONG usage (if mentioned)
+- Keep examples SHORT (under 20 characters each)
+
+Output valid JSON:
+{
+  "rules": [
+    {
+      "rule_text": "English instruction from the guide",
+      "micro_class": "Category (Punctuation, Terminology, Style, etc.)",
+      "examples_pos": ["good"],
+      "examples_neg": ["bad"],
+      "severity_cue": "must/should/never/avoid",
+      "regex_candidate": true if mechanical check possible, false otherwise
+    }
+  ]
+}
+
+If no actionable rules, return: {"rules": []}"""
 
         user_prompt = f"""Document section path: {' > '.join(section_path)}
 
@@ -182,12 +202,11 @@ Extract all actionable translation rules from this text. Focus on specific, test
     ) -> List[Dict[str, Any]]:
         """Use LLM to evaluate translation against candidate rules"""
         
-        # JSON schema for evaluation findings
+        # JSON schema for LM Studio (no strict mode)
         findings_schema = {
             "type": "json_schema",
             "json_schema": {
                 "name": "evaluation_findings",
-                "strict": True,
                 "schema": {
                     "type": "object",
                     "properties": {
@@ -197,19 +216,17 @@ Extract all actionable translation rules from this text. Focus on specific, test
                                 "type": "object",
                                 "properties": {
                                     "rule_id": {"type": "string"},
-                                    "severity": {"type": "string", "enum": ["Minor", "Major", "Critical"]},
+                                    "severity": {"type": "string"},
                                     "justification": {"type": "string"},
                                     "highlighted_text": {"type": "string"},
                                     "span_start": {"type": "integer"},
                                     "span_end": {"type": "integer"}
                                 },
-                                "required": ["rule_id", "severity", "justification", "highlighted_text", "span_start", "span_end"],
-                                "additionalProperties": False
+                                "required": ["rule_id", "severity", "justification", "highlighted_text", "span_start", "span_end"]
                             }
                         }
                     },
-                    "required": ["findings"],
-                    "additionalProperties": False
+                    "required": ["findings"]
                 }
             }
         }
@@ -221,20 +238,50 @@ Extract all actionable translation rules from this text. Focus on specific, test
             rules_text += f"Rule: {rule['rule_text']}\n"
             rules_text += f"Examples: {rule.get('examples_pos', [])} | {rule.get('examples_neg', [])}\n\n"
         
-        system_prompt = f"""You are a professional translation quality evaluator for {locale} locale.
+        system_prompt = f"""You are evaluating a {locale} translation against specific rules. Be EXTREMELY precise and conservative.
 
-Your task: Evaluate the target translation against the provided rules and identify violations.
+CRITICAL ACCURACY CHECKS (Check these even without explicit rules):
+1. TONE/MEANING: Does the translation convey the same tone and meaning as source? (exclamation vs question vs statement)
+2. COMPLETENESS: Is any information missing or added?
+3. TERMINOLOGY: Are brand names, product names unchanged where they should be?
 
-Rules:
-1. Only flag CLEAR violations of the provided rules
-2. Be conservative - when in doubt, don't flag it
-3. Provide specific justification for each finding
-4. Use exact rule_id from the provided list
-5. Identify the exact text span that violates the rule
-6. Choose appropriate severity based on the rule's impact
+EVALUATION PROCESS:
+1. Read the rule carefully
+2. Check if the TARGET text violates that specific rule
+3. ONLY flag if you can PROVE a violation with evidence
+4. DO NOT make assumptions or interpretations
+
+COMMON MISTAKES TO AVOID:
+- DNT (Do Not Translate) rules: Check if term was CHANGED or KEPT SAME. If it's KEPT (not translated), there's NO violation.
+- Punctuation rules: Check EXACT punctuation marks in target
+- Terminology rules: Compare actual terms used vs. required terms
+- Style rules: Only flag if clearly different from requirement
+- Tone changes: Exclamation (!) → Question (?) = CRITICAL accuracy issue
+
+BE CONSERVATIVE:
+- When in doubt, do NOT flag
+- Only flag OBVIOUS, PROVABLE violations
+- Do not add your opinions or interpretations
+- Do not flag something if the rule is vague
 
 Available Rules:
-{rules_text}"""
+{rules_text}
+
+Output valid JSON:
+{{
+  "findings": [
+    {{
+      "rule_id": "exact_rule_id_from_list_above",
+      "severity": "Minor or Major or Critical",
+      "justification": "Explain what the rule says and what you found in the target that violates it",
+      "highlighted_text": "exact text from target",
+      "span_start": 0,
+      "span_end": 10
+    }}
+  ]
+}}
+
+If NO clear violations, return: {{"findings": []}}"""
 
         user_prompt = f"""Source: {source_text}
 Target: {target_text}

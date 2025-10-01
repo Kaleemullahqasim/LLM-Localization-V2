@@ -1,5 +1,0 @@
-Rule ID,Macro Class,Micro Class,Rule Text,Severity,Weight,Section
-ZH-CN-000-CB5526E3,Punctuation,Major,Always use full-width punctuation in Chinese,Minor,2,2
-ZH-CN-001-BF80D156,Punctuation,Minor,Never use half-width exclamation,Minor,2,2
-ZH-CN-002-67EC6CBD,Terminology,negative,"Never translate ""Shopify""",Minor,4,2
-ZH-CN-003-3A02E88B,Mechanics,positive,Keep {customer_name} placeholders unchanged,Minor,3,2

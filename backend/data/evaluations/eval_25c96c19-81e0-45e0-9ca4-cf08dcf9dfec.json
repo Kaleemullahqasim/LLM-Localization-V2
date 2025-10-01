@@ -1,0 +1,13 @@
+{
+  "job_id": "25c96c19-81e0-45e0-9ca4-cf08dcf9dfec",
+  "kb_version": "2025.10.01-1155",
+  "rubric_version": "2025.10.01-1155",
+  "model_prompt_version": "1.0.0",
+  "final_score": 100,
+  "findings": [],
+  "by_macro": {},
+  "source_text": "Welcome to Shopify!",
+  "target_text": "欢迎使用Shopify",
+  "locale": "zh-CN",
+  "created_at": "2025-10-01 03:57:40.280740"
+}

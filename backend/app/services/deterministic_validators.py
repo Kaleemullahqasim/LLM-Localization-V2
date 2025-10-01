@@ -51,11 +51,98 @@ class DeterministicValidators:
         regex_rules = [rule for rule in rules if rule.regex_ready and rule.regex_pattern]
         
         # Run checks
+        findings.extend(await self._check_punctuation_type_mismatch(source_text, target_text, locale, segment_id, rules))
         findings.extend(await self._check_punctuation_width(source_text, target_text, locale, segment_id, rules))
         findings.extend(await self._check_placeholders(source_text, target_text, locale, segment_id, rules))
         findings.extend(await self._check_date_format(source_text, target_text, locale, segment_id, rules))
         findings.extend(await self._check_line_breaks(source_text, target_text, locale, segment_id, rules))
         findings.extend(await self._check_regex_rules(source_text, target_text, locale, segment_id, regex_rules))
+        
+        return findings
+    
+    async def _check_punctuation_type_mismatch(
+        self,
+        source_text: str,
+        target_text: str,
+        locale: str,
+        segment_id: str,
+        rules: List[Rule]
+    ) -> List[Finding]:
+        """Check if punctuation TYPE changed (! vs ? vs .) - this is an accuracy issue"""
+        
+        findings = []
+        
+        # Map of punctuation types (both half and full width versions)
+        punctuation_types = {
+            'exclamation': ['!', '！'],
+            'question': ['?', '？'],
+            'period': ['.', '。'],
+            'comma': [',', '，'],
+            'semicolon': [';', '；'],
+            'colon': [':', '：']
+        }
+        
+        # Get ending punctuation from source and target
+        source_ending = source_text.strip()[-1] if source_text.strip() else ''
+        target_ending = target_text.strip()[-1] if target_text.strip() else ''
+        
+        # Find which type each belongs to
+        source_type = None
+        target_type = None
+        
+        for punc_type, chars in punctuation_types.items():
+            if source_ending in chars:
+                source_type = punc_type
+            if target_ending in chars:
+                target_type = punc_type
+        
+        # If both have punctuation but DIFFERENT types, this is a MAJOR issue
+        if source_type and target_type and source_type != target_type:
+            finding = Finding(
+                segment_id=segment_id,
+                rule_id="ACCURACY-PUNCT-TYPE",
+                severity=Severity.CRITICAL,
+                penalty=15,  # High penalty - this changes meaning/tone
+                justification=f"Punctuation type changed from {source_type} ({source_ending}) to {target_type} ({target_ending}). This changes the tone and meaning of the sentence.",
+                citation=Citation(section_path=["Accuracy"], document_name="Built-in accuracy check"),
+                deterministic=True,
+                span_start=len(target_text.strip()) - 1,
+                span_end=len(target_text.strip()),
+                highlighted_text=target_ending
+            )
+            findings.append(finding)
+        
+        # If source has punctuation but target DOESN'T, this is also MAJOR
+        elif source_type and not target_type:
+            finding = Finding(
+                segment_id=segment_id,
+                rule_id="ACCURACY-PUNCT-MISSING",
+                severity=Severity.CRITICAL,
+                penalty=15,  # High penalty - missing punctuation changes meaning
+                justification=f"Source ends with {source_type} punctuation ({source_ending}) but target has no ending punctuation. This loses the tone and emphasis of the original.",
+                citation=Citation(section_path=["Accuracy"], document_name="Built-in accuracy check"),
+                deterministic=True,
+                span_start=len(target_text.strip()),
+                span_end=len(target_text.strip()),
+                highlighted_text=""
+            )
+            findings.append(finding)
+        
+        # If target has punctuation but source DOESN'T, flag as added punctuation
+        elif target_type and not source_type:
+            finding = Finding(
+                segment_id=segment_id,
+                rule_id="ACCURACY-PUNCT-ADDED",
+                severity=Severity.MAJOR,
+                penalty=10,
+                justification=f"Target adds {target_type} punctuation ({target_ending}) that doesn't exist in source. This changes the tone of the message.",
+                citation=Citation(section_path=["Accuracy"], document_name="Built-in accuracy check"),
+                deterministic=True,
+                span_start=len(target_text.strip()) - 1,
+                span_end=len(target_text.strip()),
+                highlighted_text=target_ending
+            )
+            findings.append(finding)
         
         return findings
     

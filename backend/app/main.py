@@ -7,6 +7,7 @@ import uuid
 from typing import List, Optional
 import uvicorn
 
+from .config import config
 from .models import (
     DocumentUploadRequest, EvaluationRequest, ReviewOverrideRequest,
     KnowledgeBase, ScoreReport, FeedbackEvent
@@ -37,9 +38,9 @@ evaluation_engine = EvaluationEngine()
 review_service = ReviewService()
 
 # Ensure data directories exist
-os.makedirs("data/uploads", exist_ok=True)
-os.makedirs("data/knowledge_bases", exist_ok=True)
-os.makedirs("data/evaluations", exist_ok=True)
+os.makedirs(os.path.join(config.DATA_DIR, "uploads"), exist_ok=True)
+os.makedirs(os.path.join(config.DATA_DIR, "knowledge_bases"), exist_ok=True)
+os.makedirs(os.path.join(config.DATA_DIR, "evaluations"), exist_ok=True)
 
 @app.get("/")
 async def root():
@@ -65,7 +66,7 @@ async def upload_document(
     
     # Save uploaded file
     file_id = str(uuid.uuid4())
-    file_path = f"data/uploads/{file_id}_{file.filename}"
+    file_path = os.path.join(config.DATA_DIR, "uploads", f"{file_id}_{file.filename}")
     
     try:
         with open(file_path, "wb") as buffer:
@@ -92,7 +93,7 @@ async def upload_document(
 @app.get("/api/knowledge-bases")
 async def list_knowledge_bases():
     """List all available knowledge bases"""
-    kb_dir = "data/knowledge_bases"
+    kb_dir = os.path.join(config.DATA_DIR, "knowledge_bases")
     
     if not os.path.exists(kb_dir):
         return {"knowledge_bases": []}
@@ -146,11 +147,37 @@ async def evaluate_translation(request: EvaluationRequest):
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Error during evaluation: {str(e)}")
 
+@app.get("/api/evaluations")
+async def list_evaluations():
+    """List all evaluations"""
+    eval_dir = os.path.join(config.DATA_DIR, "evaluations")
+    
+    if not os.path.exists(eval_dir):
+        return {"evaluations": []}
+    
+    eval_files = [f for f in os.listdir(eval_dir) if f.endswith('.json') and f.startswith('eval_')]
+    
+    evaluations = []
+    for eval_file in eval_files:
+        try:
+            import json
+            with open(os.path.join(eval_dir, eval_file), 'r', encoding='utf-8') as f:
+                eval_data = json.load(f)
+                evaluations.append(eval_data)
+        except Exception as e:
+            print(f"Error reading eval file {eval_file}: {e}")
+            continue
+    
+    # Sort by created_at descending
+    evaluations.sort(key=lambda x: x.get('created_at', ''), reverse=True)
+    
+    return {"evaluations": evaluations}
+
 @app.get("/api/evaluation/{job_id}")
 async def get_evaluation(job_id: str):
     """Get evaluation results by job ID"""
     
-    eval_file = f"data/evaluations/eval_{job_id}.json"
+    eval_file = os.path.join(config.DATA_DIR, "evaluations", f"eval_{job_id}.json")
     
     if not os.path.exists(eval_file):
         raise HTTPException(status_code=404, detail="Evaluation not found")
@@ -185,6 +212,7 @@ async def override_finding(request: ReviewOverrideRequest):
 async def search_rules(
     query: str,
     locale: str = "zh-CN",
+    kb_version: str = None,
     top_k: int = 10
 ):
     """Search rules by text query"""
@@ -196,7 +224,8 @@ async def search_rules(
         results = await embedding_service.hybrid_search(
             query_text=query,
             top_k=top_k,
-            locale=locale
+            locale=locale,
+            kb_version=kb_version
         )
         
         # Format results for API response
@@ -220,12 +249,42 @@ async def search_rules(
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error searching rules: {str(e)}")
 
+@app.delete("/api/knowledge-bases/{kb_version}")
+async def delete_knowledge_base(kb_version: str):
+    """Delete a knowledge base"""
+    
+    kb_dir = os.path.join(config.DATA_DIR, "knowledge_bases")
+    
+    try:
+        # Find and delete the KB file
+        kb_file = f"kb_{kb_version}.json"
+        csv_file = f"points_table_{kb_version}.csv"
+        
+        kb_files = [f for f in os.listdir(kb_dir) if f.startswith(f"kb_{kb_version}_")]
+        csv_files = [f for f in os.listdir(kb_dir) if f.startswith(f"points_table_{kb_version}_")]
+        
+        if not kb_files:
+            raise HTTPException(status_code=404, detail="Knowledge base not found")
+        
+        # Delete files
+        for file in kb_files:
+            os.remove(os.path.join(kb_dir, file))
+        for file in csv_files:
+            os.remove(os.path.join(kb_dir, file))
+        
+        return {"message": f"Knowledge base {kb_version} deleted successfully"}
+        
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="Knowledge base not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error deleting knowledge base: {str(e)}")
+
 @app.get("/api/stats")
 async def get_system_stats():
     """Get system statistics"""
     
-    kb_dir = "data/knowledge_bases"
-    eval_dir = "data/evaluations"
+    kb_dir = os.path.join(config.DATA_DIR, "knowledge_bases")
+    eval_dir = os.path.join(config.DATA_DIR, "evaluations")
     
     stats = {
         "knowledge_bases": 0,

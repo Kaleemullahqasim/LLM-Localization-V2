@@ -1,0 +1,41 @@
+{
+  "job_id": "4649b685-1939-4bee-abc0-606c835b45ff",
+  "kb_version": "2025.10.01-1129",
+  "rubric_version": "2025.10.01-1129",
+  "model_prompt_version": "1.0.0",
+  "final_score": 88,
+  "findings": [
+    {
+      "segment_id": "seg_4649b685-1939-4bee-abc0-606c835b45ff",
+      "rule_id": "ZH-CN-073-586B032E",
+      "severity": "Critical",
+      "penalty": 12,
+      "justification": "Shopify product names are Do Not Translate (DNT) terms and should not be translated. The term 'Shopify' is incorrectly translated in the target text.",
+      "citation": {
+        "section_path": [
+          "6",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "deterministic": false,
+      "span_start": 3,
+      "span_end": 9,
+      "highlighted_text": "使Shopify"
+    }
+  ],
+  "by_macro": {
+    "Terminology": {
+      "penalty": 12,
+      "count": 1,
+      "rules_triggered": [
+        "ZH-CN-073-586B032E"
+      ]
+    }
+  },
+  "source_text": "Welcome to Shopify!",
+  "target_text": "欢迎使Shopify!",
+  "locale": "zh-CN",
+  "created_at": "2025-10-01 03:30:24.645736"
+}

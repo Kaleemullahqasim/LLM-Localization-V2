@@ -11,6 +11,7 @@ import markdown
 import uuid
 
 from ..models import Rule, MacroClass, Severity, Citation, KnowledgeBase
+from ..config import config
 from .lm_studio_client import LMStudioClient
 from .embedding_service import EmbeddingService
 
@@ -40,15 +41,15 @@ class DocumentIngestionService:
             r'\b(don\'t|avoid)\b:?\s*["""]'
         ]
         
-        # Default weights by macro class
+        # Default weights by macro class from centralized config
         self.default_weights = {
-            MacroClass.ACCURACY: 5,
-            MacroClass.TERMINOLOGY: 4,
-            MacroClass.MECHANICS: 3,
-            MacroClass.PUNCTUATION: 2,
-            MacroClass.STYLE: 1,
-            MacroClass.LEGAL: 6,
-            MacroClass.STANDARDS: 3
+            MacroClass.ACCURACY: config.WEIGHT_ACCURACY,
+            MacroClass.TERMINOLOGY: config.WEIGHT_TERMINOLOGY,
+            MacroClass.MECHANICS: config.WEIGHT_MECHANICS,
+            MacroClass.PUNCTUATION: config.WEIGHT_PUNCTUATION,
+            MacroClass.STYLE: config.WEIGHT_STYLE,
+            MacroClass.LEGAL: config.WEIGHT_LEGAL,
+            MacroClass.STANDARDS: config.WEIGHT_STANDARDS
         }
     
     async def ingest_document(self, file_path: str, locale: str) -> KnowledgeBase:
@@ -64,17 +65,29 @@ class DocumentIngestionService:
         
         # Step 3: Use LLM to normalize snippets into atomic rules
         raw_rules = []
-        for snippet, section_path in candidate_snippets[:50]:  # Limit for MVP
+        failed_snippets = 0
+        max_snippets = min(len(candidate_snippets), 100)  # Process up to 100 snippets
+        
+        print(f"Processing {max_snippets} candidate snippets...")
+        for i, (snippet, section_path) in enumerate(candidate_snippets[:max_snippets]):
             try:
+                if i % 10 == 0:
+                    print(f"  Processed {i}/{max_snippets} snippets, extracted {len(raw_rules)} rules so far...")
+                    
                 extracted = await self.lm_client.extract_rules_from_text(snippet, section_path)
                 for rule_data in extracted:
                     rule_data['section_path'] = section_path
                     raw_rules.append(rule_data)
             except Exception as e:
-                print(f"Error extracting rules from snippet: {e}")
+                print(f"⚠️  Error extracting rules from snippet {i+1}: {e}")
+                failed_snippets += 1
+                # Only continue if not too many failures
+                if failed_snippets > 10:
+                    print(f"❌ Too many extraction failures ({failed_snippets}). Check LM Studio connection.")
+                    raise Exception(f"LLM extraction failed: {failed_snippets} consecutive errors")
                 continue
         
-        print(f"Extracted {len(raw_rules)} raw rules from LLM")
+        print(f"✅ Extracted {len(raw_rules)} raw rules from {max_snippets} snippets ({failed_snippets} failures)")
         
         # Step 4: Process and structure rules
         processed_rules = []
@@ -103,7 +116,7 @@ class DocumentIngestionService:
         
         # Step 6: Save knowledge base and generate embeddings
         await self._save_knowledge_base(kb)
-        await self.embedding_service.index_rules(processed_rules)
+        await self.embedding_service.index_rules(processed_rules, kb_version=kb_version, locale=locale)
         
         print(f"Knowledge base created: {kb.kb_version}")
         return kb
@@ -128,7 +141,7 @@ class DocumentIngestionService:
         doc = Document(file_path)
         markdown_lines = []
         section_map = {}
-        current_section = ["1"]
+        section_counters = [0, 0, 0, 0, 0, 0]  # Support up to 6 heading levels
         
         for para in doc.paragraphs:
             text = para.text.strip()
@@ -137,12 +150,25 @@ class DocumentIngestionService:
             
             # Detect headers based on style
             if para.style.name.startswith('Heading'):
-                level = int(para.style.name.split()[-1]) if para.style.name.split()[-1].isdigit() else 1
+                # Extract heading level
+                try:
+                    level = int(para.style.name.split()[-1])
+                except (ValueError, IndexError):
+                    level = 1
+                
+                level = min(level, 6)  # Cap at 6 levels
                 markdown_lines.append('#' * level + ' ' + text)
                 
-                # Update section path  
-                current_section = current_section[:level-1] + [str(len(current_section))]
-                section_map[text] = current_section.copy()
+                # Increment counter at this level
+                section_counters[level - 1] += 1
+                
+                # Reset all deeper level counters
+                for i in range(level, 6):
+                    section_counters[i] = 0
+                
+                # Build section path
+                current_section = [str(section_counters[i]) for i in range(level) if section_counters[i] > 0]
+                section_map[text] = current_section
             else:
                 markdown_lines.append(text)
         
@@ -331,19 +357,29 @@ class DocumentIngestionService:
         
         # Common regex patterns for localization rules
         if 'exclamation' in text_lower and locale == 'zh-CN':
-            return r'[^！]!'  # Half-width exclamation in Chinese
-        elif 'date' in text_lower and 'yyyy年' in text_lower:
-            return r'\d{4}-\d{1,2}-\d{1,2}'  # ISO date instead of Chinese format
-        elif 'placeholder' in text_lower:
-            return r'\{[^}]*\}'  # Placeholder patterns
+            # Match half-width exclamation mark
+            return r'!'
         elif 'comma' in text_lower and locale == 'zh-CN':
-            return r'[^，],'  # Half-width comma in Chinese
+            # Match half-width comma
+            return r','
+        elif 'date' in text_lower and 'yyyy年' in text_lower:
+            # Match ISO date format (should be Chinese format instead)
+            return r'\d{4}-\d{1,2}-\d{1,2}'
+        elif 'placeholder' in text_lower:
+            # Match curly brace placeholders
+            return r'\{[^}]*\}'
+        elif 'colon' in text_lower and locale == 'zh-CN':
+            # Match half-width colon
+            return r':'
+        elif 'question' in text_lower and locale == 'zh-CN':
+            # Match half-width question mark
+            return r'\?'
         
         return None
     
     async def _save_knowledge_base(self, kb: KnowledgeBase):
         """Save knowledge base to disk"""
-        kb_dir = os.path.join("data", "knowledge_bases")
+        kb_dir = os.path.join(config.DATA_DIR, "knowledge_bases")
         os.makedirs(kb_dir, exist_ok=True)
         
         # Save as JSON

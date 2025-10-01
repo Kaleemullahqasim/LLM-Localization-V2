@@ -1,0 +1,40 @@
+{
+  "job_id": "9c4ccff0-5ef8-409d-a1db-bec7a1d2a6ac",
+  "kb_version": "2025.09.27-1609",
+  "rubric_version": "2025.09.27-1609",
+  "model_prompt_version": "1.0.0",
+  "final_score": 92,
+  "findings": [
+    {
+      "segment_id": "seg_9c4ccff0-5ef8-409d-a1db-bec7a1d2a6ac",
+      "rule_id": "ZH-CN-002-67EC6CBD",
+      "severity": "Major",
+      "penalty": 8,
+      "justification": "The target translation '欢迎使用Shopify!' contains the word 'Shopify' in uppercase, which is not allowed under the rule that prohibits translating 'Shopify'. The original text was 'Welcome to Shopify!', and the translation directly uses 'Shopify' without any modification, which is a direct copy of the original term. This violates the rule that prohibits translating 'Shopify' and should be flagged as a clear violation.",
+      "citation": {
+        "section_path": [
+          "2"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "deterministic": false,
+      "span_start": 0,
+      "span_end": 12,
+      "highlighted_text": "欢迎使用Shopify!"
+    }
+  ],
+  "by_macro": {
+    "Style": {
+      "penalty": 8,
+      "count": 1,
+      "rules_triggered": [
+        "ZH-CN-002-67EC6CBD"
+      ]
+    }
+  },
+  "source_text": "Welcome to Shopify!",
+  "target_text": "欢迎使用Shopify!",
+  "locale": "zh-CN",
+  "created_at": "2025-09-28 02:54:21.323269"
+}

@@ -1,0 +1,41 @@
+{
+  "job_id": "6b995269-9fce-47bc-9cb2-32c0240d1d22",
+  "kb_version": "2025.10.01-1045",
+  "rubric_version": "2025.10.01-1045",
+  "model_prompt_version": "1.0.0",
+  "final_score": 92,
+  "findings": [
+    {
+      "segment_id": "seg_6b995269-9fce-47bc-9cb2-32c0240d1d22",
+      "rule_id": "ZH-CN-022-866D5D44",
+      "severity": "Major",
+      "penalty": 8,
+      "justification": "The target translation '欢迎使用Shopify' is a third-party product name. According to Rule ZH-CN-022-866D5D44, third-party product names should not be translated unless specified by Shopify.",
+      "citation": {
+        "section_path": [
+          "2",
+          "2"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "deterministic": false,
+      "span_start": 0,
+      "span_end": 14,
+      "highlighted_text": "欢迎使用Shopify"
+    }
+  ],
+  "by_macro": {
+    "Style": {
+      "penalty": 8,
+      "count": 1,
+      "rules_triggered": [
+        "ZH-CN-022-866D5D44"
+      ]
+    }
+  },
+  "source_text": "Welcome to Shopify!",
+  "target_text": "欢迎使用Shopify",
+  "locale": "zh-CN",
+  "created_at": "2025-10-01 02:50:52.441505"
+}

@@ -1,0 +1,2650 @@
+{
+  "kb_version": "2025.10.01-1155",
+  "rubric_version": "2025.10.01-1155",
+  "rules": [
+    {
+      "rule_id": "ZH-CN-000-3934C909",
+      "macro_class": "Punctuation",
+      "micro_class": "Punctuation",
+      "rule_text": "Use full-width punctuation for non-ASCII characters (e.g., �rst).",
+      "examples_pos": [
+        "first"
+      ],
+      "examples_neg": [
+        "first."
+      ],
+      "default_severity": "Major",
+      "default_weight": 2,
+      "citation": {
+        "section_path": [
+          "1",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": true,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.184978"
+    },
+    {
+      "rule_id": "ZH-CN-001-3648362E",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "Avoid abbreviating 'Language Specialists' in translations.",
+      "examples_pos": [
+        "Language Specialists"
+      ],
+      "examples_neg": [
+        "Lang. Specs."
+      ],
+      "default_severity": "Minor",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "1",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185001"
+    },
+    {
+      "rule_id": "ZH-CN-002-19E6E5B9",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "Never use a negative or frightening tone in translations.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Use a negative tone.",
+        "Use a frightening tone."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "2",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185013"
+    },
+    {
+      "rule_id": "ZH-CN-003-3F96ABB4",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "Active voice should be encouraged in translations.",
+      "examples_pos": [
+        "Use active voice.",
+        "Active voice is preferred."
+      ],
+      "examples_neg": [
+        "Use passive voice.",
+        "Passive voice is used."
+      ],
+      "default_severity": "Minor",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "2",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185026"
+    },
+    {
+      "rule_id": "ZH-CN-004-2A550BE3",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "Do not translate literally; aim for adaptation to the target language, customs, and standards.",
+      "examples_pos": [
+        "Adapt the text to the target language.",
+        "Translate with cultural adaptation."
+      ],
+      "examples_neg": [
+        "Translate word for word.",
+        "Literal translation only."
+      ],
+      "default_severity": "Minor",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "2",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185036"
+    },
+    {
+      "rule_id": "ZH-CN-005-3FCAA3DC",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "When translating editorial content, aim to achieve the same results as in the original.",
+      "examples_pos": [
+        "Translate to achieve equivalent results.",
+        "Ensure translation matches original impact."
+      ],
+      "examples_neg": [
+        "Neutralize or omit content for ease.",
+        "Translate without regard to original impact."
+      ],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "2",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185050"
+    },
+    {
+      "rule_id": "ZH-CN-006-8C9C86CD",
+      "macro_class": "Style",
+      "micro_class": "Punctuation",
+      "rule_text": "When reordering lists of languages/countries, place the target language first.",
+      "examples_pos": [
+        "Reorder list to place target language first.",
+        "Target language listed at the top."
+      ],
+      "examples_neg": [
+        "Keep original list order.",
+        "List not reordered for target language."
+      ],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "2",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185065"
+    },
+    {
+      "rule_id": "ZH-CN-007-13CEA27E",
+      "macro_class": "Mechanics",
+      "micro_class": "Style",
+      "rule_text": "Headings and subheadings must be informative and descriptive.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Headings should be vague.",
+        "Subheadings must not highlight key info."
+      ],
+      "default_severity": "Major",
+      "default_weight": 3,
+      "citation": {
+        "section_path": [
+          "3",
+          "1",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185077"
+    },
+    {
+      "rule_id": "ZH-CN-008-8CFDF84A",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Headings and subheadings should help merchants understand what they’ll find in the section below.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Headings should confuse merchants.",
+        "Subheadings must not clarify content."
+      ],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "1",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185093"
+    },
+    {
+      "rule_id": "ZH-CN-009-37F41861",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Headings and subheadings must be concise and scannable.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Headings should be long and hard to scan.",
+        "Subheadings must not use simple language."
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "1",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185105"
+    },
+    {
+      "rule_id": "ZH-CN-010-90B03E1D",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Headings and subheadings must use simple, clear language.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Headings should use complex language.",
+        "Subheadings must not be easy to understand."
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "1",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185119"
+    },
+    {
+      "rule_id": "ZH-CN-011-0F936524",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Headings and subheadings must be kept to a single sentence.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Headings should be multiple sentences.",
+        "Subheadings must not fit in one sentence."
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "1",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185140"
+    },
+    {
+      "rule_id": "ZH-CN-012-7140859D",
+      "macro_class": "Punctuation",
+      "micro_class": "Punctuation",
+      "rule_text": "Headings and subheadings must avoid using punctuation such as periods, commas, or semicolons.",
+      "examples_pos": [
+        "Headings: Overview of Products",
+        "Subheadings: Key Features"
+      ],
+      "examples_neg": [
+        "Headings: Overview of Products.",
+        "Subheadings: Key Features, Benefits."
+      ],
+      "default_severity": "Major",
+      "default_weight": 2,
+      "citation": {
+        "section_path": [
+          "3",
+          "1",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185150"
+    },
+    {
+      "rule_id": "ZH-CN-013-12ECD32D",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "The translation should be crisp and appealing to the reader.",
+      "examples_pos": [
+        "crisp"
+      ],
+      "examples_neg": [
+        "wordy"
+      ],
+      "default_severity": "Minor",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "3",
+          "1",
+          "5",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185161"
+    },
+    {
+      "rule_id": "ZH-CN-014-F21745AA",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "The subject line should be short and concise.",
+      "examples_pos": [
+        "short"
+      ],
+      "examples_neg": [
+        "long"
+      ],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "1",
+          "5",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185171"
+    },
+    {
+      "rule_id": "ZH-CN-015-0D828646",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "The subject line should be appealing to the reader.",
+      "examples_pos": [
+        "appealing"
+      ],
+      "examples_neg": [
+        "uninteresting"
+      ],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "1",
+          "5",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185184"
+    },
+    {
+      "rule_id": "ZH-CN-016-6DF49133",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Present tense is preferred. Only use future tense when referring to something that'll happen in the future.",
+      "examples_pos": [
+        "After this date, the boosted post will revert to a regular post."
+      ],
+      "examples_neg": [
+        "After this date, the boosted post will revert to a regular post."
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "2",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185199"
+    },
+    {
+      "rule_id": "ZH-CN-017-C2884A6F",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Use the right tone. An instructional, informal and direct tone is preferred.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "2",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185210"
+    },
+    {
+      "rule_id": "ZH-CN-018-C81DE98E",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Use contractions.",
+      "examples_pos": [
+        "After you’ve set up your product, click Save."
+      ],
+      "examples_neg": [
+        "After you have set up your product, click Save."
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "2",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185220"
+    },
+    {
+      "rule_id": "ZH-CN-019-594B92A7",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Address the reader or user as “you.”",
+      "examples_pos": [
+        "You can add products from the Products page in your Shopify admin."
+      ],
+      "examples_neg": [],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "2",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185233"
+    },
+    {
+      "rule_id": "ZH-CN-020-90CC030F",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "Use variable sentence structure in translation.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Use the same sentence structure throughout"
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "3",
+          "2",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185242"
+    },
+    {
+      "rule_id": "ZH-CN-021-EB46D119",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "Avoid long sentences in translation.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Include very long sentences"
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "3",
+          "2",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185253"
+    },
+    {
+      "rule_id": "ZH-CN-022-DA679491",
+      "macro_class": "Style",
+      "micro_class": "Terminology",
+      "rule_text": "Avoid using more than two “的” characters in one sentence.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Include more than two “的” in a sentence"
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "2",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185267"
+    },
+    {
+      "rule_id": "ZH-CN-023-2C3F77FE",
+      "macro_class": "Terminology",
+      "micro_class": "Accuracy",
+      "rule_text": "Legal translation must be 100% accurate and faithful to the original text.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Legal translation should be mostly accurate.",
+        "Legal translation can have minor errors."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "3",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185276"
+    },
+    {
+      "rule_id": "ZH-CN-024-E8E7B5CF",
+      "macro_class": "Terminology",
+      "micro_class": "Accuracy",
+      "rule_text": "The translator must ensure that the translated document conveys the same meaning as the original document.",
+      "examples_pos": [],
+      "examples_neg": [
+        "The translator should try to convey the same meaning.",
+        "The translated document may not fully match the original."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "3",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185284"
+    },
+    {
+      "rule_id": "ZH-CN-025-E8DEFF3C",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "The translator must be familiar with the legal systems and terminology of both the source and target languages.",
+      "examples_pos": [],
+      "examples_neg": [
+        "The translator should know some legal terms.",
+        "The translator may not understand both languages' legal systems."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "3",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185294"
+    },
+    {
+      "rule_id": "ZH-CN-026-DAEB220C",
+      "macro_class": "Legal",
+      "micro_class": "Style",
+      "rule_text": "The translator must be able to convey the intended meaning of the legal document in the cultural context of the target language.",
+      "examples_pos": [],
+      "examples_neg": [
+        "The translator should convey the meaning, but not necessarily in cultural context.",
+        "The translated document may ignore cultural nuances."
+      ],
+      "default_severity": "Major",
+      "default_weight": 6,
+      "citation": {
+        "section_path": [
+          "3",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185306"
+    },
+    {
+      "rule_id": "ZH-CN-027-56517204",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "Write shorter translations for captions. Prioritize conveying the original meaning and intent while keeping Shopify’s voice and values in mind.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "3",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185318"
+    },
+    {
+      "rule_id": "ZH-CN-028-B681DCCE",
+      "macro_class": "Mechanics",
+      "micro_class": "Punctuation",
+      "rule_text": "Observe character limit: refer to project-specific information if available or follow the length limits as stated.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Major",
+      "default_weight": 3,
+      "citation": {
+        "section_path": [
+          "3",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185326"
+    },
+    {
+      "rule_id": "ZH-CN-029-DC1FEC05",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Adjust caption length (duration) if needed, i.e., when there’s not enough time to read a caption in the target language.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185339"
+    },
+    {
+      "rule_id": "ZH-CN-030-AB7E347F",
+      "macro_class": "Style",
+      "micro_class": "Terminology",
+      "rule_text": "Keep the verb conjugation / way of address as in the original wherever it makes sense.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185349"
+    },
+    {
+      "rule_id": "ZH-CN-031-EBAC868D",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "Contrary to English, Simplified Chinese has no verb conjugation, but tense must be reflected in the translation.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "3",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185357"
+    },
+    {
+      "rule_id": "ZH-CN-032-63CA4285",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Text should match the actions/video displays presented in the video.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185367"
+    },
+    {
+      "rule_id": "ZH-CN-033-00221E9B",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Sometimes, change the sequence of sentences for readability. However, follow the sequence of the source when translating subtitles to keep consistency between text and video displays if possible.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185380"
+    },
+    {
+      "rule_id": "ZH-CN-034-F410BAC4",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Avoid ending a sentence and starting a new one in the same subtitle, except for short sentences and instances where it makes sense to do so.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Subtitle ends sentence, starts new one.",
+        "Long sentence split across subtitles."
+      ],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185391"
+    },
+    {
+      "rule_id": "ZH-CN-035-9553AE0E",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Use separate subtitles for each sentence, or several subtitles in case of long sentences.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Single subtitle contains multiple sentences.",
+        "Long sentence in one subtitle."
+      ],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185402"
+    },
+    {
+      "rule_id": "ZH-CN-036-4C9D0384",
+      "macro_class": "Punctuation",
+      "micro_class": "Punctuation",
+      "rule_text": "End subtitles at natural linguistic breakpoints: after punctuation marks, before conjunctions, before prepositions.",
+      "examples_pos": [
+        "Subtitle ends at comma.",
+        "Subtitle starts before 'and'."
+      ],
+      "examples_neg": [
+        "Subtitle ends mid-sentence.",
+        "Subtitle starts after 'but'."
+      ],
+      "default_severity": "Major",
+      "default_weight": 2,
+      "citation": {
+        "section_path": [
+          "3",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185409"
+    },
+    {
+      "rule_id": "ZH-CN-037-2C3771C6",
+      "macro_class": "Style",
+      "micro_class": "Punctuation",
+      "rule_text": "The line break should not separate: a noun from an article, a noun from an adjective, a first name from a last name, a verb from a subject pronoun.",
+      "examples_pos": [
+        "Noun and article stay together.",
+        "First name and last name in same subtitle."
+      ],
+      "examples_neg": [
+        "Noun separated from article.",
+        "First name and last name split."
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "3",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185420"
+    },
+    {
+      "rule_id": "ZH-CN-038-DE2F72B8",
+      "macro_class": "Style",
+      "micro_class": "Terminology",
+      "rule_text": "Avoid creating acronyms.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Create acronyms"
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "4",
+          "5"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185429"
+    },
+    {
+      "rule_id": "ZH-CN-039-BD26A295",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "If you have to use an acronym, spell it out the first time you use it and follow with the acronym in brackets.",
+      "examples_pos": [
+        "First time: 'rich text editor' (RTE). Second time: RTE."
+      ],
+      "examples_neg": [
+        "First time: 'rich text editor'. Second time: RTE."
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "4",
+          "5"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185440"
+    },
+    {
+      "rule_id": "ZH-CN-040-FBE27D9E",
+      "macro_class": "Style",
+      "micro_class": "Terminology",
+      "rule_text": "Internationally understood acronyms and abbreviations are acceptable.",
+      "examples_pos": [
+        "time zone (TZ)",
+        "tax"
+      ],
+      "examples_neg": [
+        "local acronym not widely recognized"
+      ],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "4",
+          "5"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185450"
+    },
+    {
+      "rule_id": "ZH-CN-041-3D72ED4D",
+      "macro_class": "Style",
+      "micro_class": "Capitalization",
+      "rule_text": "Do not capitalize Chinese characters.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Chinese CHARACTERS",
+        "CHINESE Characters"
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "4",
+          "6"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185460"
+    },
+    {
+      "rule_id": "ZH-CN-042-15F1176E",
+      "macro_class": "Mechanics",
+      "micro_class": "Capitalization",
+      "rule_text": "When translating proper nouns with English capitalization, preserve the original format.",
+      "examples_pos": [
+        "ProperNoun"
+      ],
+      "examples_neg": [
+        "proper noun",
+        "PROPER NOUN"
+      ],
+      "default_severity": "Major",
+      "default_weight": 3,
+      "citation": {
+        "section_path": [
+          "4",
+          "6"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185481"
+    },
+    {
+      "rule_id": "ZH-CN-043-46543A2E",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "Translate job titles and team names in running text.",
+      "examples_pos": [],
+      "examples_neg": [
+        "\"Ecosystem Governance\" appears in the signature of the email below, which should not be translated."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "4",
+          "7"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185492"
+    },
+    {
+      "rule_id": "ZH-CN-044-19CA5FF1",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "Do not translate job titles and team names in signatures.",
+      "examples_pos": [],
+      "examples_neg": [
+        "\"Ecosystem Governance\" appears in the signature of the email below, which should not be translated."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "4",
+          "7"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185501"
+    },
+    {
+      "rule_id": "ZH-CN-045-69CCAD2B",
+      "macro_class": "Punctuation",
+      "micro_class": "Punctuation",
+      "rule_text": "Avoid using punctuation such as periods, commas, or semicolons in translations.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Use a period.",
+        "Add commas here."
+      ],
+      "default_severity": "Minor",
+      "default_weight": 2,
+      "citation": {
+        "section_path": [
+          "4",
+          "8"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185509"
+    },
+    {
+      "rule_id": "ZH-CN-046-45B29807",
+      "macro_class": "Punctuation",
+      "micro_class": "Punctuation",
+      "rule_text": "Follow the source punctuation when translating.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Please pay attention to the correct capitalization of terms left in English. Do not follow source punctuation.",
+        "Please pay attention to the correct capitalization of terms left in English. Add a period after each item."
+      ],
+      "default_severity": "Major",
+      "default_weight": 2,
+      "citation": {
+        "section_path": [
+          "4",
+          "9"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185516"
+    },
+    {
+      "rule_id": "ZH-CN-047-A296FC92",
+      "macro_class": "Punctuation",
+      "micro_class": "Punctuation",
+      "rule_text": "Do not add a period after single-word or noun-phrase items in the translation.",
+      "examples_pos": [
+        "Please pay attention to the correct capitalization of terms left in English. If the bullet list is composed of items with a single word or a noun phrase, do not add a period after them in the translation."
+      ],
+      "examples_neg": [
+        "Please pay attention to the correct capitalization of terms left in English. If the bullet list is composed of items with a single word or a noun phrase, add a period after them in the translation."
+      ],
+      "default_severity": "Major",
+      "default_weight": 2,
+      "citation": {
+        "section_path": [
+          "4",
+          "9"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185526"
+    },
+    {
+      "rule_id": "ZH-CN-048-DA8D2F45",
+      "macro_class": "Style",
+      "micro_class": "Punctuation",
+      "rule_text": "Use Chinese full stop at the end of a sentence, even when it ends with an English word, numeral or URL.",
+      "examples_pos": [
+        "正确使用中文句号"
+      ],
+      "examples_neg": [
+        "错误地使用英文句号"
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "4",
+          "10"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185537"
+    },
+    {
+      "rule_id": "ZH-CN-049-DD3F7028",
+      "macro_class": "Style",
+      "micro_class": "Punctuation",
+      "rule_text": "Avoid using a full stop at the end of headlines and subheads in marketing copy for China.",
+      "examples_pos": [
+        "无句号的标题"
+      ],
+      "examples_neg": [
+        "带句号的标题"
+      ],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "4",
+          "10"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185547"
+    },
+    {
+      "rule_id": "ZH-CN-050-943592A8",
+      "macro_class": "Style",
+      "micro_class": "Punctuation",
+      "rule_text": "In some creative advertising, a full stop at the end of a line may be acceptable as a graphic treatment or based on artistic consideration.",
+      "examples_pos": [
+        "创意广告中句号作为装饰"
+      ],
+      "examples_neg": [
+        "非创意场景使用句号装饰"
+      ],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "4",
+          "10"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185559"
+    },
+    {
+      "rule_id": "ZH-CN-051-4E6F42AA",
+      "macro_class": "Punctuation",
+      "micro_class": "Punctuation",
+      "rule_text": "If commas are used to separate keywords, always use single-byte commas because they function as operators.",
+      "examples_pos": [],
+      "examples_neg": [
+        "If commas are used to separate keywords, always use double-byte commas because they function as operators."
+      ],
+      "default_severity": "Minor",
+      "default_weight": 2,
+      "citation": {
+        "section_path": [
+          "4",
+          "15"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185566"
+    },
+    {
+      "rule_id": "ZH-CN-052-975C2CC0",
+      "macro_class": "Style",
+      "micro_class": "Punctuation",
+      "rule_text": "In Chinese, the em dash (—) should not be used as it looks the same as the Chinese character for 'one' (一).",
+      "examples_pos": [],
+      "examples_neg": [
+        "The em dash (—) is used here."
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "4",
+          "17",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185581"
+    },
+    {
+      "rule_id": "ZH-CN-053-905CCE70",
+      "macro_class": "Punctuation",
+      "micro_class": "Punctuation",
+      "rule_text": "If punctuation is needed in Chinese, use ( ), ：or en dash to emphasize the element.",
+      "examples_pos": [
+        "Use ( ) to emphasize.",
+        "Use : to introduce."
+      ],
+      "examples_neg": [
+        "Do not use em dash (—)."
+      ],
+      "default_severity": "Minor",
+      "default_weight": 2,
+      "citation": {
+        "section_path": [
+          "4",
+          "17",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185589"
+    },
+    {
+      "rule_id": "ZH-CN-054-19C7A6F7",
+      "macro_class": "Standards",
+      "micro_class": "Punctuation",
+      "rule_text": "No space is needed before the standard Chinese dash “——”.",
+      "examples_pos": [
+        "The dash “——” is used without space.",
+        ""
+      ],
+      "examples_neg": [
+        "There is a space before the dash “——”."
+      ],
+      "default_severity": "Major",
+      "default_weight": 3,
+      "citation": {
+        "section_path": [
+          "4",
+          "17",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185599"
+    },
+    {
+      "rule_id": "ZH-CN-055-7A196F91",
+      "macro_class": "Style",
+      "micro_class": "Punctuation",
+      "rule_text": "For the single-byte English dash (which is a hyphen in Chinese), whether to use space depends on context.",
+      "examples_pos": [
+        "Use space before the hyphen.",
+        ""
+      ],
+      "examples_neg": [
+        "Always use space before the hyphen."
+      ],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "4",
+          "17",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185612"
+    },
+    {
+      "rule_id": "ZH-CN-056-04F1BA57",
+      "macro_class": "Style",
+      "micro_class": "Terminology",
+      "rule_text": "Understand the cultural context of both source and target audiences to avoid misunderstandings or potential offense.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "4",
+          "19"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185623"
+    },
+    {
+      "rule_id": "ZH-CN-057-9D2DDA75",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Consider the surrounding text when translating emojis to ensure they fit appropriately.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "4",
+          "19"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185633"
+    },
+    {
+      "rule_id": "ZH-CN-058-E00E2A66",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Strive to preserve the emotional intent of the original emoji when translating.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "4",
+          "19"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185643"
+    },
+    {
+      "rule_id": "ZH-CN-059-FE23A5A7",
+      "macro_class": "Accuracy",
+      "micro_class": "Style",
+      "rule_text": "Use the most appropriate expressions in the target language to convey the intended meaning effectively.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Major",
+      "default_weight": 5,
+      "citation": {
+        "section_path": [
+          "4",
+          "19"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185653"
+    },
+    {
+      "rule_id": "ZH-CN-060-179B27CC",
+      "macro_class": "Mechanics",
+      "micro_class": "Style",
+      "rule_text": "Dates must be rewritten according to the Chinese style using YYYY 年 MM 月 DD 日 or YYYY 年 M 月 D 日.",
+      "examples_pos": [],
+      "examples_neg": [
+        "2023-12-25",
+        "2023/12/25"
+      ],
+      "default_severity": "Major",
+      "default_weight": 3,
+      "citation": {
+        "section_path": [
+          "5",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185662"
+    },
+    {
+      "rule_id": "ZH-CN-061-E97D6E56",
+      "macro_class": "Mechanics",
+      "micro_class": "Style",
+      "rule_text": "Time format must use 'XXhXX' (24-hour clock) with single-byte colon (:) as the separator.",
+      "examples_pos": [],
+      "examples_neg": [
+        "XX:XX",
+        "XX-XX"
+      ],
+      "default_severity": "Major",
+      "default_weight": 3,
+      "citation": {
+        "section_path": [
+          "5",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185670"
+    },
+    {
+      "rule_id": "ZH-CN-062-39E40CDB",
+      "macro_class": "Style",
+      "micro_class": "Terminology",
+      "rule_text": "When translating a.m./p.m., use 上午 and 下午 respectively.",
+      "examples_pos": [
+        "上午 9:00",
+        "下午 3:15"
+      ],
+      "examples_neg": [
+        "AM 9:00",
+        "PM 3:15"
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "5",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185682"
+    },
+    {
+      "rule_id": "ZH-CN-063-1405A82D",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Time zone acronyms must remain unchanged and placed in parentheses.",
+      "examples_pos": [
+        "(CST)",
+        "(UTC+8)"
+      ],
+      "examples_neg": [
+        "CST",
+        "+8"
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "5",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185692"
+    },
+    {
+      "rule_id": "ZH-CN-064-BF250C16",
+      "macro_class": "Standards",
+      "micro_class": "Style",
+      "rule_text": "Always check project specific instructions for currency handling requirements.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Minor",
+      "default_weight": 3,
+      "citation": {
+        "section_path": [
+          "5",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185702"
+    },
+    {
+      "rule_id": "ZH-CN-065-BE488F1B",
+      "macro_class": "Style",
+      "micro_class": "Terminology",
+      "rule_text": "Currency symbols, values (roughly convert if not 1 to 1 with USD$), and currency codes must be localized.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "5",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185713"
+    },
+    {
+      "rule_id": "ZH-CN-066-51824341",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "Always assess the context at hand against the definition when using approved terminology.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185720"
+    },
+    {
+      "rule_id": "ZH-CN-067-8A2ACAFB",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "Never follow the termbase blindly if a term is used in a different context.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Always follow the termbase blindly."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185727"
+    },
+    {
+      "rule_id": "ZH-CN-068-1CED89EF",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "Use industry-standard terminology.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Use non-standard terminology."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185734"
+    },
+    {
+      "rule_id": "ZH-CN-069-46E528B6",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Follow spelling and capitalization of Shopify brand names as well as third-party brand names.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Ignore brand name capitalization."
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "6"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185744"
+    },
+    {
+      "rule_id": "ZH-CN-070-7E968F69",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "Shopify prefers descriptive names for its products. Verify there is no confusion with the corresponding common noun, especially when the term is capitalized.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Use non-descriptive product names."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185752"
+    },
+    {
+      "rule_id": "ZH-CN-071-9FD825C3",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "Product names are usually not translated, while feature names are.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Translate product names."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185759"
+    },
+    {
+      "rule_id": "ZH-CN-072-87C060B6",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "Refer to the Terminology guidelines for the localization of proper nouns.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Do not refer to Terminology guidelines for proper nouns."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185767"
+    },
+    {
+      "rule_id": "ZH-CN-073-468FCFF2",
+      "macro_class": "Terminology",
+      "micro_class": "Process",
+      "rule_text": "Translators & reviewers must proactively raise terminology-related queries in the JIRA Language Forum.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Do not raise queries in JIRA Language Forum."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185808"
+    },
+    {
+      "rule_id": "ZH-CN-074-F0B5712F",
+      "macro_class": "Terminology",
+      "micro_class": "Process",
+      "rule_text": "Language Specialists must use QuickTerm and the Query Sheet to raise terminology queries from translators and themselves with the client.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Do not use QuickTerm or Query Sheet for queries."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185816"
+    },
+    {
+      "rule_id": "ZH-CN-075-9B9B65D8",
+      "macro_class": "Terminology",
+      "micro_class": "Process",
+      "rule_text": "Enter a new term request in the Query Sheet and directly in QuickTerm whenever a new term or a deviation from the standard language is used in the source text.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Do not enter new term requests in QuickTerm or Query Sheet."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185824"
+    },
+    {
+      "rule_id": "ZH-CN-076-540359AD",
+      "macro_class": "Terminology",
+      "micro_class": "Process",
+      "rule_text": "When a new or challenging term is solved in a language, share the outcome with all other languages.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Do not share term solutions with other languages."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185831"
+    },
+    {
+      "rule_id": "ZH-CN-077-3EC3BE22",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "Double-check terms marked as Legacy, in particular: product, plan, and program names.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Do not double-check Legacy terms."
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185839"
+    },
+    {
+      "rule_id": "ZH-CN-078-3877ED0C",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "Shopify product names are Do Not Translate (DNT) terms and should not be translated.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Translated product name"
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185847"
+    },
+    {
+      "rule_id": "ZH-CN-079-A9C2B56C",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "Do not translate the name portion of an API.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Translated API name"
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185854"
+    },
+    {
+      "rule_id": "ZH-CN-080-0201D813",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "When moving around API names, adjust the part indicating the category to conform to each target language’s grammatical rules.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Incorrect category placement"
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "6",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185866"
+    },
+    {
+      "rule_id": "ZH-CN-081-BEC9DC86",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "For product name and other proper noun translation, refer to the Terminology guidelines for localization.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Unreferenced proper noun translation"
+      ],
+      "default_severity": "Minor",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185874"
+    },
+    {
+      "rule_id": "ZH-CN-082-8B27BD3A",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "Shopify can be occasionally omitted from the product name. Adjust the translation to match the source text using the same full or short form pattern.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Inconsistent Shopify presence"
+      ],
+      "default_severity": "Minor",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185882"
+    },
+    {
+      "rule_id": "ZH-CN-083-83311094",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "Always check Shopify’s latest termbase (TB) for newly added DNT terms.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Outdated termbase usage"
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185906"
+    },
+    {
+      "rule_id": "ZH-CN-084-42F56EF5",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "Do not translate third-party product names unless they are specified by Shopify.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Translate 'Adobe Photoshop' as 'Adobe Photoshop'",
+        "Do not translate 'Shopify' in any context"
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6",
+          "2"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185914"
+    },
+    {
+      "rule_id": "ZH-CN-085-677B4FF0",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "Trademarked names and registered trademarks should not be localized unless local laws require translation, and an approved translated form of the trademark is available.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Trademarked names should be localized.",
+        "Localized trademarked names are allowed."
+      ],
+      "default_severity": "Minor",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "6",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185922"
+    },
+    {
+      "rule_id": "ZH-CN-086-BC676231",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "For third-party trademarks, verify how the names are treated on the third party’s website.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Do not verify third-party trademarks.",
+        "Third-party trademarks should be ignored."
+      ],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "6",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185933"
+    },
+    {
+      "rule_id": "ZH-CN-087-360996FC",
+      "macro_class": "Punctuation",
+      "micro_class": "Style",
+      "rule_text": "Ask the question to the query sheet in case of doubt.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Do not ask the query sheet.",
+        "Query sheet should not be used."
+      ],
+      "default_severity": "Minor",
+      "default_weight": 2,
+      "citation": {
+        "section_path": [
+          "6",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185940"
+    },
+    {
+      "rule_id": "ZH-CN-088-619B5354",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "Text in curly brackets should not be translated unless otherwise instructed.",
+      "examples_pos": [],
+      "examples_neg": [
+        "No orders found at {location} translated"
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "7",
+          "1",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185948"
+    },
+    {
+      "rule_id": "ZH-CN-089-3052267A",
+      "macro_class": "Terminology",
+      "micro_class": "Process",
+      "rule_text": "Check any project-specific information regarding translation of curly bracketed text.",
+      "examples_pos": [],
+      "examples_neg": [
+        "No project-specific check performed"
+      ],
+      "default_severity": "Minor",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "7",
+          "1",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185956"
+    },
+    {
+      "rule_id": "ZH-CN-090-9A95EF39",
+      "macro_class": "Mechanics",
+      "micro_class": "Style",
+      "rule_text": "It is OK to move the placeholder around in curly brackets.",
+      "examples_pos": [
+        "\"Pas de commandes trouvées - {location}\""
+      ],
+      "examples_neg": [
+        "\"No orders found at {location} translated\"",
+        "\"Pas de commandes trouvées au 234 Laurier\""
+      ],
+      "default_severity": "Minor",
+      "default_weight": 3,
+      "citation": {
+        "section_path": [
+          "7",
+          "1",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185964"
+    },
+    {
+      "rule_id": "ZH-CN-091-E3B62337",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "Text in angle brackets should not be translated unless otherwise instructed.",
+      "examples_pos": [],
+      "examples_neg": [
+        "<example>",
+        "<translated>"
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "7",
+          "1",
+          "2"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185971"
+    },
+    {
+      "rule_id": "ZH-CN-092-D02AD19B",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "Text in square brackets is generally left untranslated.",
+      "examples_pos": [],
+      "examples_neg": [
+        "[English text]",
+        "[Translated text]"
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "7",
+          "1",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185979"
+    },
+    {
+      "rule_id": "ZH-CN-093-A1042CAC",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "It might be OK to translate text in square brackets if project-specific information or context requires it.",
+      "examples_pos": [
+        "[English text] -> [Translated text]",
+        "[Project-specific info]"
+      ],
+      "examples_neg": [
+        "[English text] -> [Translated text]",
+        "[Project-specific info]"
+      ],
+      "default_severity": "Minor",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "7",
+          "1",
+          "3"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185987"
+    },
+    {
+      "rule_id": "ZH-CN-094-F0DF52F6",
+      "macro_class": "Style",
+      "micro_class": "Punctuation",
+      "rule_text": "Do not add spaces between the ending square bracket of the anchor text and the round bracket of the URL.",
+      "examples_pos": [
+        "Discover our [what is dropshipping]({{blog, url(path: '/what-is-dropshipping')}})"
+      ],
+      "examples_neg": [
+        "Discover our what is dropshipping ({{blog, url(path: '/what-is-dropshipping')}})",
+        "Discover our [what is dropshipping] ({{blog, url(path: '/what-is-dropshipping')}})"
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "7",
+          "1",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.185997"
+    },
+    {
+      "rule_id": "ZH-CN-095-95F56274",
+      "macro_class": "Style",
+      "micro_class": "Terminology",
+      "rule_text": "Anchor text must be enclosed in square brackets as per the English source.",
+      "examples_pos": [
+        "Discover our [what is dropshipping]({{blog, url(path: '/what-is-dropshipping')}})"
+      ],
+      "examples_neg": [
+        "Discover our what is dropshipping ({{blog, url(path: '/what-is-dropshipping')}})"
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "7",
+          "1",
+          "4"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.186012"
+    },
+    {
+      "rule_id": "ZH-CN-096-A688573C",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "UI texts should be clear, concise, and consistent.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "7",
+          "2"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.186021"
+    },
+    {
+      "rule_id": "ZH-CN-097-2EB13948",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "When encountering a UI item, check if it has been already translated to maintain consistency.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Minor",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "7",
+          "2"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.186029"
+    },
+    {
+      "rule_id": "ZH-CN-098-839D75D9",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "If a UI had been already localized, then it should be available in the TM and that translation can be used.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Minor",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "7",
+          "2",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.186037"
+    },
+    {
+      "rule_id": "ZH-CN-099-AC30F55E",
+      "macro_class": "Style",
+      "micro_class": "Terminology",
+      "rule_text": "If you do not find the UI item in the Admin TM, then it hasn't been localized yet (it might belong to an app or software that has not been localized).",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "7",
+          "2",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.186049"
+    },
+    {
+      "rule_id": "ZH-CN-100-4A7141E4",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "In Help projects, use the bilingual format <possible tag>English<\\possible tag> (Translation) to refer to the correct English UI.",
+      "examples_pos": [
+        "<possible tag>English<\\possible tag> (Translation)"
+      ],
+      "examples_neg": [
+        "English",
+        "<possible tag>English<\\possible tag>"
+      ],
+      "default_severity": "Minor",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "7",
+          "2",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.186057"
+    },
+    {
+      "rule_id": "ZH-CN-101-9644B2BA",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "When translating UI options, distinguish buttons from CTA links.",
+      "examples_pos": [],
+      "examples_neg": [],
+      "default_severity": "Minor",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "7",
+          "2",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.186066"
+    },
+    {
+      "rule_id": "ZH-CN-102-EEFA59A5",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Buttons: Omit articles and unnecessary pronouns to reduce characters in the button text.",
+      "examples_pos": [],
+      "examples_neg": [
+        "The button is clicked.",
+        "Click the button."
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "7",
+          "2",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.186076"
+    },
+    {
+      "rule_id": "ZH-CN-103-5B2638A3",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "CTA links: Use articles in order to improve the readability and naturalness of the sentence. Omit articles only when reducing string length.",
+      "examples_pos": [
+        "Click the button.",
+        "Open the file."
+      ],
+      "examples_neg": [
+        "Button clicked.",
+        "File opened."
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "7",
+          "2",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.186087"
+    },
+    {
+      "rule_id": "ZH-CN-104-2CF61D6C",
+      "macro_class": "Style",
+      "micro_class": "Punctuation",
+      "rule_text": "As a general rule, don't use quotation marks to refer to a UI option.",
+      "examples_pos": [],
+      "examples_neg": [
+        "\"Open File\"",
+        "\"Save\""
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "7",
+          "2",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.186096"
+    },
+    {
+      "rule_id": "ZH-CN-105-62F0F7D8",
+      "macro_class": "Terminology",
+      "micro_class": "Style",
+      "rule_text": "Capitalization is not relevant for Simplified Chinese. Pay attention to the correct capitalization of terms left in English.",
+      "examples_pos": [],
+      "examples_neg": [
+        "\"open file\"",
+        "\"Save\""
+      ],
+      "default_severity": "Minor",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "7",
+          "2",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.186106"
+    },
+    {
+      "rule_id": "ZH-CN-106-85ABF28E",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "Buttons and UI options are written in the infinitive form.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Clicked the button.",
+        "Button was clicked."
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "7",
+          "2",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.186116"
+    },
+    {
+      "rule_id": "ZH-CN-107-26861DE2",
+      "macro_class": "Terminology",
+      "micro_class": "Punctuation",
+      "rule_text": "Do not insert additional line breaks into translation (in Smartling displayed as �).",
+      "examples_pos": [],
+      "examples_neg": [
+        "Line break inserted here�"
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "7",
+          "5"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.186124"
+    },
+    {
+      "rule_id": "ZH-CN-108-A925A555",
+      "macro_class": "Style",
+      "micro_class": "Style",
+      "rule_text": "If there is a line break in the suggestion from the TM and there are no line breaks in the source, delete that additional line break.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Source: 'Hello\\nWorld' | TM suggestion: 'Hello\\nWorld' → No line break should be added"
+      ],
+      "default_severity": "Major",
+      "default_weight": 1,
+      "citation": {
+        "section_path": [
+          "7",
+          "5"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.186134"
+    },
+    {
+      "rule_id": "ZH-CN-109-B7970B2B",
+      "macro_class": "Terminology",
+      "micro_class": "Terminology",
+      "rule_text": "Do not substitute the line break symbol represented by � in translation.",
+      "examples_pos": [],
+      "examples_neg": [
+        "Use a different line break symbol"
+      ],
+      "default_severity": "Major",
+      "default_weight": 4,
+      "citation": {
+        "section_path": [
+          "7",
+          "5",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "regex_ready": false,
+      "regex_pattern": null,
+      "created_at": "2025-10-01 03:55:28.186143"
+    }
+  ],
+  "source_document": "3da28ce6-7649-4218-83d5-f5dc2cac2b71_Shopify_StyleGuide_zh-CN_v.1.1.docx",
+  "locale": "zh-CN",
+  "created_at": "2025-10-01 03:55:28.186194",
+  "rule_count": 110
+}

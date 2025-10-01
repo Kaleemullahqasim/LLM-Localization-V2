@@ -1,0 +1,40 @@
+{
+  "job_id": "75552190-397a-4ee4-8ff6-6739ed4e59a6",
+  "kb_version": "2025.10.01-1155",
+  "rubric_version": "2025.10.01-1155",
+  "model_prompt_version": "1.0.0",
+  "final_score": 85,
+  "findings": [
+    {
+      "segment_id": "seg_-9028671",
+      "rule_id": "ACCURACY-PUNCT-MISSING",
+      "severity": "Critical",
+      "penalty": 15,
+      "justification": "Source ends with exclamation punctuation (!) but target has no ending punctuation. This loses the tone and emphasis of the original.",
+      "citation": {
+        "section_path": [
+          "Accuracy"
+        ],
+        "page_number": null,
+        "document_name": "Built-in accuracy check"
+      },
+      "deterministic": true,
+      "span_start": 11,
+      "span_end": 11,
+      "highlighted_text": ""
+    }
+  ],
+  "by_macro": {
+    "Punctuation": {
+      "penalty": 15,
+      "count": 1,
+      "rules_triggered": [
+        "ACCURACY-PUNCT-MISSING"
+      ]
+    }
+  },
+  "source_text": "Welcome to Shopify!",
+  "target_text": "欢迎使用Shopify",
+  "locale": "zh-CN",
+  "created_at": "2025-10-01 04:06:54.001577"
+}

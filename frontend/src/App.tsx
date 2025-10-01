@@ -1,294 +1,142 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import './App.css';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import Login from './components/Login';
+import AdminDashboard from './components/AdminDashboard';
+import TestTakerDashboard from './components/TestTakerDashboard';
+import EvaluatorDashboard from './components/EvaluatorDashboard';
 
-// --- Data Types (mirroring backend models) ---
+function AppContent() {
+  const { user, logout, isAuthenticated } = useAuth();
 
-interface Citation {
-  section_path: string[];
-  document_name?: string;
-}
+  if (!isAuthenticated) {
+    return <Login />;
+  }
 
-enum Severity {
-  MINOR = "Minor",
-  MAJOR = "Major",
-  CRITICAL = "Critical",
-}
-
-interface Finding {
-  segment_id: string;
-  rule_id: string;
-  severity: Severity;
-  penalty: number;
-  justification: string;
-  citation: Citation;
-  deterministic: boolean;
-  span_start?: number;
-  span_end?: number;
-  highlighted_text?: string;
-  // Frontend-specific state
-  override_severity?: Severity;
-  dismissed?: boolean;
-  accepted?: boolean;
-}
-
-interface ScoreBreakdown {
-  penalty: number;
-  count: number;
-  rules_triggered: string[];
-}
-
-interface ScoreReport {
-  job_id: string;
-  kb_version: string;
-  rubric_version: string;
-  final_score: number;
-  findings: Finding[];
-  by_macro: { [key: string]: ScoreBreakdown };
-  source_text: string;
-  target_text: string;
-  locale: string;
-}
-
-interface KnowledgeBaseInfo {
-    kb_version: string;
-    locale: string;
-    rule_count: number;
-    source_document: string;
-    created_at: string;
-}
-
-
-function App() {
-  const [sourceText, setSourceText] = useState('Welcome to Shopify!');
-  const [targetText, setTargetText] = useState('欢迎使用Shopify!');
-  const [locale, setLocale] = useState('zh-CN');
-  const [kbVersion, setKbVersion] = useState('');
-  
-  const [knowledgeBases, setKnowledgeBases] = useState<KnowledgeBaseInfo[]>([]);
-  const [scoreReport, setScoreReport] = useState<ScoreReport | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    // Fetch available knowledge bases on component mount
-    const fetchKBs = async () => {
-      try {
-        const response = await axios.get('/api/knowledge-bases');
-        setKnowledgeBases(response.data.knowledge_bases);
-        // Auto-select the first KB if available
-        if (response.data.knowledge_bases.length > 0) {
-          setKbVersion(response.data.knowledge_bases[0].kb_version);
-        }
-      } catch (err) {
-        setError('Failed to fetch knowledge bases. Is the backend running?');
-      }
-    };
-    fetchKBs();
-  }, []);
-
-  const handleEvaluate = async () => {
-    if (!kbVersion) {
-      setError('Please select a Knowledge Base.');
-      return;
-    }
-    setIsLoading(true);
-    setError(null);
-    setScoreReport(null);
-
-    try {
-      const response = await axios.post<ScoreReport>('/api/evaluate', {
-        source_text: sourceText,
-        target_text: targetText,
-        locale: locale,
-        kb_version: kbVersion,
-      });
-      setScoreReport(response.data);
-    } catch (err: any) {
-      setError(err.response?.data?.detail || 'An unknown error occurred during evaluation.');
-    } finally {
-      setIsLoading(false);
+  const getRoleColor = () => {
+    switch (user?.role) {
+      case 'admin': return '#8b5cf6';
+      case 'test-taker': return '#3b82f6';
+      case 'evaluator': return '#10b981';
+      default: return '#667eea';
     }
   };
 
-  const handleOverride = (findingId: string, action: string, newSeverity?: Severity) => {
-    // This is a placeholder for the review functionality.
-    // In a real app, this would make an API call to /api/review/override
-    // and then update the scoreReport state.
-    console.log(`Override action: ${action} for finding ${findingId} with new severity ${newSeverity}`);
-    
-    if (scoreReport) {
-        const updatedFindings = scoreReport.findings.map(f => {
-            if (f.segment_id === findingId) {
-                if (action === 'dismiss') {
-                    return { ...f, dismissed: !f.dismissed };
-                }
-                if (action === 'accept') {
-                    return { ...f, accepted: !f.accepted };
-                }
-                if (action === 'change_severity' && newSeverity) {
-                    return { ...f, override_severity: newSeverity };
-                }
-            }
-            return f;
-        });
-        setScoreReport({ ...scoreReport, findings: updatedFindings });
+  const getRoleLabel = () => {
+    switch (user?.role) {
+      case 'admin': return 'Administrator';
+      case 'test-taker': return 'Test Taker';
+      case 'evaluator': return 'Evaluator';
+      default: return user?.role;
     }
   };
-
-  const getSeverityClass = (severity: Severity) => {
-    switch (severity) {
-      case Severity.CRITICAL: return 'severity-critical';
-      case Severity.MAJOR: return 'severity-major';
-      case Severity.MINOR: return 'severity-minor';
-      default: return '';
-    }
-  };
-  
-  const renderHighlightedTextWithFindings = (text: string, findings: Finding[]) => {
-    if (!findings || findings.length === 0) {
-      return text;
-    }
-    
-    // Sort findings by span_start to apply highlights in order
-    const sortedFindings = findings
-      .filter(f => f.span_start !== undefined && f.span_end !== undefined)
-      .sort((a, b) => (a.span_start || 0) - (b.span_start || 0));
-    
-    if (sortedFindings.length === 0) {
-      return text;
-    }
-    
-    let result = [];
-    let lastIndex = 0;
-    
-    for (const finding of sortedFindings) {
-      // Add text before this finding
-      if (finding.span_start! > lastIndex) {
-        result.push(text.substring(lastIndex, finding.span_start!));
-      }
-      
-      // Add highlighted text
-      const highlightedText = text.substring(finding.span_start!, finding.span_end!);
-      result.push(
-        <span key={`${finding.rule_id}-${finding.span_start}`} className={`highlight ${getSeverityClass(finding.severity)}`}>
-          {highlightedText}
-        </span>
-      );
-      
-      lastIndex = finding.span_end!;
-    }
-    
-    // Add remaining text
-    if (lastIndex < text.length) {
-      result.push(text.substring(lastIndex));
-    }
-    
-    return result;
-  };
-
 
   return (
-    <div className="App">
-      <header>
-        <h1>Rule-Anchored Localization QA</h1>
-        <p>MVP system for automated translation quality assessment.</p>
-      </header>
-
-      <main>
-        <div className="evaluation-form card">
-          <h2>New Evaluation</h2>
-          <textarea
-            placeholder="Source Text"
-            value={sourceText}
-            onChange={(e) => setSourceText(e.target.value)}
-          />
-          <textarea
-            placeholder="Target Text"
-            value={targetText}
-            onChange={(e) => setTargetText(e.target.value)}
-          />
-          <div className="form-controls">
-            <select value={locale} onChange={e => setLocale(e.target.value)}>
-                <option value="zh-CN">Chinese (zh-CN)</option>
-                {/* Add other locales as supported */}
-            </select>
-            <select value={kbVersion} onChange={e => setKbVersion(e.target.value)}>
-              <option value="" disabled>Select Knowledge Base</option>
-              {knowledgeBases.map(kb => (
-                <option key={kb.kb_version} value={kb.kb_version}>
-                  {kb.kb_version} ({kb.source_document})
-                </option>
-              ))}
-            </select>
-            <button onClick={handleEvaluate} disabled={isLoading}>
-              {isLoading ? 'Evaluating...' : 'Evaluate'}
+    <div style={{
+      minHeight: '100vh',
+      background: '#f8fafc',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+    }}>
+      {/* Header */}
+      <div style={{
+        background: 'white',
+        borderBottom: '1px solid #e2e8f0',
+        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)'
+      }}>
+        <div style={{
+          maxWidth: '1600px',
+          margin: '0 auto',
+          padding: '1.25rem 2rem',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            <div>
+              <h1 style={{
+                fontSize: '1.5rem',
+                fontWeight: '700',
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                margin: 0
+              }}>
+                Translation QA System
+              </h1>
+              <p style={{
+                fontSize: '0.8125rem',
+                color: '#64748b',
+                margin: '0.25rem 0 0 0'
+              }}>
+                Automated Quality Assurance Platform
+              </p>
+            </div>
+          </div>
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            <div style={{ textAlign: 'right' }}>
+              <div style={{
+                fontSize: '0.9375rem',
+                fontWeight: '600',
+                color: '#1e293b',
+                marginBottom: '0.25rem'
+              }}>
+                {user?.name}
+              </div>
+              <div style={{
+                display: 'inline-block',
+                padding: '0.25rem 0.75rem',
+                background: `${getRoleColor()}15`,
+                color: getRoleColor(),
+                borderRadius: '1rem',
+                fontSize: '0.75rem',
+                fontWeight: '600',
+                textTransform: 'uppercase',
+                letterSpacing: '0.025em'
+              }}>
+                {getRoleLabel()}
+              </div>
+            </div>
+            <button
+              onClick={logout}
+              style={{
+                padding: '0.625rem 1.25rem',
+                background: 'white',
+                color: '#64748b',
+                border: '1px solid #e2e8f0',
+                borderRadius: '0.5rem',
+                cursor: 'pointer',
+                fontWeight: '500',
+                fontSize: '0.875rem',
+                transition: 'all 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#f8fafc';
+                e.currentTarget.style.borderColor = '#cbd5e1';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'white';
+                e.currentTarget.style.borderColor = '#e2e8f0';
+              }}
+            >
+              Logout
             </button>
           </div>
         </div>
+      </div>
 
-        {error && <div className="error-message card">{error}</div>}
-
-        {scoreReport && (
-          <div className="results-section">
-            <h2>Evaluation Report</h2>
-            <div className="score-summary card">
-                <div className="score-display">
-                    <span>Final Score</span>
-                    <span className={`score-value ${scoreReport.final_score >= 90 ? 'score-good' : 'score-bad'}`}>
-                        {scoreReport.final_score.toFixed(2)}
-                    </span>
-                </div>
-                <div className="score-details">
-                    <p><strong>Job ID:</strong> {scoreReport.job_id}</p>
-                    <p><strong>KB Version:</strong> {scoreReport.kb_version}</p>
-                    <p><strong>Target Text:</strong></p>
-                    <p className="highlighted-text-display">
-                        {renderHighlightedTextWithFindings(scoreReport.target_text, scoreReport.findings)}
-                    </p>
-                </div>
-            </div>
-
-            <h3>Findings ({scoreReport.findings.length})</h3>
-            <div className="findings-list">
-              {scoreReport.findings.map((finding) => (
-                <div key={finding.segment_id} className={`finding-card card ${finding.dismissed ? 'dismissed' : ''}`}>
-                  <div className="finding-header">
-                    <span className={`severity-badge ${getSeverityClass(finding.severity)}`}>{finding.severity}</span>
-                    <span className="rule-id">{finding.rule_id}</span>
-                  </div>
-                  <div className="finding-body">
-                    <p><strong>Justification:</strong> {finding.justification}</p>
-                    {finding.highlighted_text && <p><strong>Violation:</strong> <span className="highlighted-text">{finding.highlighted_text}</span></p>}
-                    <p className="citation">
-                      <strong>Citation:</strong> Section {finding.citation.section_path.join('.')}
-                    </p>
-                  </div>
-                  <div className="finding-actions">
-                     <select 
-                        value={finding.override_severity || finding.severity} 
-                        onChange={(e) => handleOverride(finding.segment_id, 'change_severity', e.target.value as Severity)}
-                        disabled={finding.dismissed}
-                     >
-                        <option value={Severity.MINOR}>Minor</option>
-                        <option value={Severity.MAJOR}>Major</option>
-                        <option value={Severity.CRITICAL}>Critical</option>
-                     </select>
-                     <button onClick={() => handleOverride(finding.segment_id, 'accept')} disabled={finding.dismissed}>
-                        {finding.accepted ? 'Unaccept' : 'Accept'}
-                     </button>
-                     <button onClick={() => handleOverride(finding.segment_id, 'dismiss')} className="dismiss-btn">
-                        {finding.dismissed ? 'Un-dismiss' : 'Dismiss'}
-                     </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </main>
+      {/* Content */}
+      <div>
+        {user?.role === 'admin' && <AdminDashboard />}
+        {user?.role === 'test-taker' && <TestTakerDashboard />}
+        {user?.role === 'evaluator' && <EvaluatorDashboard />}
+      </div>
     </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
+  );
+}

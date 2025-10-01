@@ -185,9 +185,9 @@ async def main():
     else:
         print("\n⚠️  Some tests failed. Check the issues above.")
         if not test2:
-            print("\n💡 Make sure LM Studio is running with:")
-            print("   - qwen/qwen3-1.7b on http://localhost:1234")
-            print("   - text-embedding-qwen3-embedding-8b on http://127.0.0.1:1234")
+            print("\n💡 Make sure LM Studio is running with the configured models:")
+            print(f"   - Chat model: {os.getenv('CHAT_MODEL', 'qwen/qwen3-1.7b')} on {os.getenv('CHAT_BASE_URL', 'http://localhost:1234/v1')}")
+            print(f"   - Embedding model: {os.getenv('EMBED_MODEL', 'text-embedding-qwen3-embedding-8b')} on {os.getenv('EMBED_BASE_URL', 'http://127.0.0.1:1234/v1')}")
 
 if __name__ == "__main__":
     asyncio.run(main())

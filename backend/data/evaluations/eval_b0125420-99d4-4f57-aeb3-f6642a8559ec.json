@@ -1,0 +1,40 @@
+{
+  "job_id": "b0125420-99d4-4f57-aeb3-f6642a8559ec",
+  "kb_version": "2025.09.27-1605",
+  "rubric_version": "2025.09.27-1605",
+  "model_prompt_version": "1.0.0",
+  "final_score": 96,
+  "findings": [
+    {
+      "segment_id": "seg_45183850",
+      "rule_id": "ZH-CN-000-CB5526E3",
+      "severity": "Minor",
+      "penalty": 4,
+      "justification": "Half-width '!' found; should use full-width '！' in Chinese.",
+      "citation": {
+        "section_path": [
+          "2"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "deterministic": true,
+      "span_start": 11,
+      "span_end": 12,
+      "highlighted_text": "!"
+    }
+  ],
+  "by_macro": {
+    "Style": {
+      "penalty": 4,
+      "count": 1,
+      "rules_triggered": [
+        "ZH-CN-000-CB5526E3"
+      ]
+    }
+  },
+  "source_text": "Welcome to Shopify!",
+  "target_text": "欢迎使用Shopify!",
+  "locale": "zh-CN",
+  "created_at": "2025-09-27 13:08:19.046794"
+}
