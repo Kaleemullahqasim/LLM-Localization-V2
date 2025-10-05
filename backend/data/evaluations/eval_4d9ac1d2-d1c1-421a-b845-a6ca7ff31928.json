@@ -1,0 +1,66 @@
+{
+  "job_id": "4d9ac1d2-d1c1-421a-b845-a6ca7ff31928",
+  "kb_version": "2025.10.01-1743",
+  "rubric_version": "2025.10.01-1743",
+  "model_prompt_version": "1.0.0",
+  "final_score": 45,
+  "findings": [
+    {
+      "segment_id": "seg_21945861",
+      "rule_id": "ACCURACY-PUNCT-ADDED",
+      "severity": "Major",
+      "penalty": 10,
+      "justification": "Target adds question punctuation (？) that doesn't exist in source. This changes the tone of the message.",
+      "citation": {
+        "section_path": [
+          "Accuracy"
+        ],
+        "page_number": null,
+        "document_name": "Built-in accuracy check"
+      },
+      "deterministic": true,
+      "span_start": 3,
+      "span_end": 4,
+      "highlighted_text": "？"
+    },
+    {
+      "segment_id": "seg_4d9ac1d2-d1c1-421a-b845-a6ca7ff31928",
+      "rule_id": "QUALITY_ACCURACY_ERROR",
+      "severity": "Critical",
+      "penalty": 45,
+      "justification": "The target translation '你好吗？' means 'How are you?' instead of the required 'What is your name?'. This completely misses the key information from the source question.",
+      "citation": {
+        "section_path": [
+          "General Translation Quality",
+          "Accuracy Error"
+        ],
+        "page_number": null,
+        "document_name": "Professional Translation Standards"
+      },
+      "deterministic": false,
+      "span_start": 0,
+      "span_end": 6,
+      "highlighted_text": "你好吗？"
+    }
+  ],
+  "by_macro": {
+    "Punctuation": {
+      "penalty": 10,
+      "count": 1,
+      "rules_triggered": [
+        "ACCURACY-PUNCT-ADDED"
+      ]
+    },
+    "Accuracy": {
+      "penalty": 45,
+      "count": 1,
+      "rules_triggered": [
+        "QUALITY_ACCURACY_ERROR"
+      ]
+    }
+  },
+  "source_text": "what is your name ",
+  "target_text": "你好吗？\n",
+  "locale": "zh-CN",
+  "created_at": "2025-10-01 09:45:24.028781"
+}

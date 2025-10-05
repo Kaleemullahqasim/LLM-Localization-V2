@@ -1,0 +1,41 @@
+{
+  "job_id": "80f1506c-662f-447a-9059-a09e875049aa",
+  "kb_version": "2025.10.01-1743",
+  "rubric_version": "2025.10.01-1743",
+  "model_prompt_version": "1.0.0",
+  "final_score": 55,
+  "findings": [
+    {
+      "segment_id": "seg_80f1506c-662f-447a-9059-a09e875049aa",
+      "rule_id": "QUALITY_ACCURACY_ERROR",
+      "severity": "Critical",
+      "penalty": 45,
+      "justification": "The target translation '你叫啥名字？' means 'What is your name?' instead of the source question 'what is your age?'. This is a complete mistranslation of both the meaning and the specific question being asked.",
+      "citation": {
+        "section_path": [
+          "General Translation Quality",
+          "Accuracy Error"
+        ],
+        "page_number": null,
+        "document_name": "Professional Translation Standards"
+      },
+      "deterministic": false,
+      "span_start": 0,
+      "span_end": 12,
+      "highlighted_text": "你叫啥名字？"
+    }
+  ],
+  "by_macro": {
+    "Accuracy": {
+      "penalty": 45,
+      "count": 1,
+      "rules_triggered": [
+        "QUALITY_ACCURACY_ERROR"
+      ]
+    }
+  },
+  "source_text": "what is your age?",
+  "target_text": "你叫啥名字？",
+  "locale": "zh-CN",
+  "created_at": "2025-10-02 14:27:03.314187"
+}

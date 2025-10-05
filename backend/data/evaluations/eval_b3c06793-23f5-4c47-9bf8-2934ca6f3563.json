@@ -1,0 +1,88 @@
+{
+  "job_id": "b3c06793-23f5-4c47-9bf8-2934ca6f3563",
+  "kb_version": "2025.10.01-1743",
+  "rubric_version": "2025.10.01-1743",
+  "model_prompt_version": "1.0.0",
+  "final_score": 73,
+  "findings": [
+    {
+      "segment_id": "seg_71989258",
+      "rule_id": "ACCURACY-PUNCT-MISSING",
+      "severity": "Critical",
+      "penalty": 15,
+      "justification": "Source ends with period punctuation (.) but target has no ending punctuation. This loses the tone and emphasis of the original.",
+      "citation": {
+        "section_path": [
+          "Accuracy"
+        ],
+        "page_number": null,
+        "document_name": "Built-in accuracy check"
+      },
+      "deterministic": true,
+      "span_start": 71,
+      "span_end": 71,
+      "highlighted_text": ""
+    },
+    {
+      "segment_id": "seg_71989258",
+      "rule_id": "ZH-CN-096-2CD748DD",
+      "severity": "Major",
+      "penalty": 6,
+      "justification": "Placeholder '[Platform Name]' from source is missing in target.",
+      "citation": {
+        "section_path": [
+          "7",
+          "1",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "deterministic": true,
+      "span_start": null,
+      "span_end": null,
+      "highlighted_text": "[Platform Name]"
+    },
+    {
+      "segment_id": "seg_71989258",
+      "rule_id": "ZH-CN-096-2CD748DD",
+      "severity": "Major",
+      "penalty": 6,
+      "justification": "Placeholder '[平台名称]' in target does not match source placeholders.",
+      "citation": {
+        "section_path": [
+          "7",
+          "1",
+          "1"
+        ],
+        "page_number": null,
+        "document_name": null
+      },
+      "deterministic": true,
+      "span_start": null,
+      "span_end": null,
+      "highlighted_text": "[平台名称]"
+    }
+  ],
+  "by_macro": {
+    "Punctuation": {
+      "penalty": 15,
+      "count": 1,
+      "rules_triggered": [
+        "ACCURACY-PUNCT-MISSING"
+      ]
+    },
+    "Mechanics": {
+      "penalty": 12,
+      "count": 2,
+      "rules_triggered": [
+        "ZH-CN-096-2CD748DD",
+        "ZH-CN-096-2CD748DD"
+      ]
+    }
+  },
+  "source_text": "Get ready to hit the e-commerce jackpot! Introducing [Platform Name], the game-changer that's about to revolutionize the way you shop.\nSegment description: Across the whole file, [Platform Name] is a non-translatable placeholder and should stay as is.",
+  "target_text": "准备好赢得电商大奖吧！隆重推出 [平台名称]，它将彻底改变您的购物方式。\n片段描述：在整个文件中，[平台名称] 为不可翻译的占位符，应保持原样",
+  "locale": "zh-CN",
+  "created_at": "2025-10-02 14:42:06.981030"
+}

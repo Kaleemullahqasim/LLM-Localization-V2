@@ -1,0 +1,40 @@
+{
+  "job_id": "dd5a328e-3315-4ca9-9969-df81c75d5b47",
+  "kb_version": "2025.10.01-1724",
+  "rubric_version": "2025.10.01-1724",
+  "model_prompt_version": "1.0.0",
+  "final_score": 85,
+  "findings": [
+    {
+      "segment_id": "seg_48419810",
+      "rule_id": "ACCURACY-PUNCT-TYPE",
+      "severity": "Critical",
+      "penalty": 15,
+      "justification": "Punctuation type changed from question (?) to comma (，). This changes the tone and meaning of the sentence.",
+      "citation": {
+        "section_path": [
+          "Accuracy"
+        ],
+        "page_number": null,
+        "document_name": "Built-in accuracy check"
+      },
+      "deterministic": true,
+      "span_start": 2,
+      "span_end": 3,
+      "highlighted_text": "，"
+    }
+  ],
+  "by_macro": {
+    "Punctuation": {
+      "penalty": 15,
+      "count": 1,
+      "rules_triggered": [
+        "ACCURACY-PUNCT-TYPE"
+      ]
+    }
+  },
+  "source_text": "hi how are you?",
+  "target_text": "您好，",
+  "locale": "zh-CN",
+  "created_at": "2025-10-01 09:26:46.221044"
+}

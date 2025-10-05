@@ -1,0 +1,41 @@
+{
+  "job_id": "76b3f9d3-8ac8-43bf-8fad-865b2463f880",
+  "kb_version": "2025.10.01-1743",
+  "rubric_version": "2025.10.01-1743",
+  "model_prompt_version": "1.0.0",
+  "final_score": 55,
+  "findings": [
+    {
+      "segment_id": "seg_76b3f9d3-8ac8-43bf-8fad-865b2463f880",
+      "rule_id": "QUALITY_ACCURACY_ERROR",
+      "severity": "Critical",
+      "penalty": 45,
+      "justification": "The target translation '你叫什么名字？' means 'What is your name?', which is completely different from the source question 'how are you?'. This is a wrong meaning and mistranslation.",
+      "citation": {
+        "section_path": [
+          "General Translation Quality",
+          "Accuracy Error"
+        ],
+        "page_number": null,
+        "document_name": "Professional Translation Standards"
+      },
+      "deterministic": false,
+      "span_start": 0,
+      "span_end": 12,
+      "highlighted_text": "你叫什么名字？"
+    }
+  ],
+  "by_macro": {
+    "Accuracy": {
+      "penalty": 45,
+      "count": 1,
+      "rules_triggered": [
+        "QUALITY_ACCURACY_ERROR"
+      ]
+    }
+  },
+  "source_text": "how are you?",
+  "target_text": "你叫什么名字？",
+  "locale": "zh-CN",
+  "created_at": "2025-10-02 14:21:22.934657"
+}

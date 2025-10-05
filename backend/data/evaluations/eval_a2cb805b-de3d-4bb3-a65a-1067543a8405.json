@@ -1,0 +1,13 @@
+{
+  "job_id": "a2cb805b-de3d-4bb3-a65a-1067543a8405",
+  "kb_version": "2025.10.01-1155",
+  "rubric_version": "2025.10.01-1155",
+  "model_prompt_version": "1.0.0",
+  "final_score": 100,
+  "findings": [],
+  "by_macro": {},
+  "source_text": "hi ",
+  "target_text": "好",
+  "locale": "zh-CN",
+  "created_at": "2025-10-01 08:55:14.791128"
+}

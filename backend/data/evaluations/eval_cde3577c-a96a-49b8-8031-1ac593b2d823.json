@@ -1,0 +1,13 @@
+{
+  "job_id": "cde3577c-a96a-49b8-8031-1ac593b2d823",
+  "kb_version": "2025.10.01-1155",
+  "rubric_version": "2025.10.01-1155",
+  "model_prompt_version": "1.0.0",
+  "final_score": 100,
+  "findings": [],
+  "by_macro": {},
+  "source_text": "what is your name?",
+  "target_text": "你叫什么名？\n\n",
+  "locale": "zh-CN",
+  "created_at": "2025-10-01 09:17:47.043587"
+}

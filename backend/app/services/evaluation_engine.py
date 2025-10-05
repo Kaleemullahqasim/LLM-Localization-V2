@@ -58,7 +58,58 @@ class EvaluationEngine:
         all_findings.extend(deterministic_findings)
         print(f"Found {len(deterministic_findings)} deterministic violations")
         
-        # Step 2: Hybrid retrieval for LLM evaluation
+        # Step 2: General translation quality evaluation (NEW!)
+        print("Running translation quality assessment...")
+        quality_findings = await self.lm_client.evaluate_translation_quality(
+            source_text=source_text,
+            target_text=target_text,
+            locale=locale
+        )
+        
+        # Convert quality findings to Finding objects
+        for quality_finding in quality_findings:
+            # Create synthetic rule_id based on issue type
+            issue_type = quality_finding['issue_type']
+            synthetic_rule_id = f"QUALITY_{issue_type.upper()}"
+            
+            # Map issue types to macro classes
+            macro_class_map = {
+                'script_mixing': 'Accuracy',
+                'accuracy_error': 'Accuracy',
+                'completeness_error': 'Accuracy',
+                'grammar_error': 'Accuracy',
+                'terminology_error': 'Terminology',
+                'professionalism_error': 'Style'
+            }
+            
+            # Create a synthetic citation for quality issues
+            synthetic_citation = Citation(
+                section_path=["General Translation Quality", f"{issue_type.replace('_', ' ').title()}"],
+                document_name="Professional Translation Standards"
+            )
+            
+            # Quality issues have higher default weights since they're fundamental errors
+            severity = Severity(quality_finding['severity'])
+            base_weight = 15  # Higher than style guide rules (which are typically 3-8)
+            penalty = base_weight * self.severity_multipliers[severity]
+            
+            finding = Finding(
+                segment_id=f"seg_{job_id}",
+                rule_id=synthetic_rule_id,
+                severity=severity,
+                penalty=penalty,
+                justification=quality_finding['justification'],
+                citation=synthetic_citation,
+                deterministic=False,
+                span_start=quality_finding.get('span_start'),
+                span_end=quality_finding.get('span_end'),
+                highlighted_text=quality_finding.get('highlighted_text')
+            )
+            all_findings.append(finding)
+        
+        print(f"Found {len(quality_findings)} quality issues")
+        
+        # Step 3: Hybrid retrieval for style guide evaluation
         print("Running hybrid retrieval...")
         query_text = f"Source: {source_text}\nTarget: {target_text}"
         candidate_rules = await self.embedding_service.hybrid_search(
@@ -69,9 +120,9 @@ class EvaluationEngine:
         )
         print(f"Retrieved {len(candidate_rules)} candidate rules")
         
-        # Step 3: LLM evaluation
+        # Step 4: Style guide rule evaluation
         if candidate_rules:
-            print("Running LLM evaluation...")
+            print("Running style guide compliance check...")
             llm_findings = await self.lm_client.evaluate_translation(
                 source_text=source_text,
                 target_text=target_text,
@@ -108,9 +159,9 @@ class EvaluationEngine:
                     )
                     all_findings.append(finding)
             
-            print(f"Found {len(llm_findings)} LLM violations")
+            print(f"Found {len(llm_findings)} style guide violations")
         
-        # Step 4: Calculate score
+        # Step 5: Calculate score
         score_report = await self._calculate_score(
             job_id=job_id,
             findings=all_findings,
@@ -120,7 +171,7 @@ class EvaluationEngine:
             locale=locale
         )
         
-        # Step 5: Save evaluation
+        # Step 6: Save evaluation
         await self._save_evaluation(score_report)
         
         print(f"Evaluation complete. Final score: {score_report.final_score}")
@@ -266,6 +317,18 @@ class EvaluationEngine:
         """Determine macro class from finding (simple logic for MVP)"""
         rule_id = finding.rule_id.upper()
         
+        # Handle quality-based findings
+        if rule_id.startswith('QUALITY_'):
+            if 'SCRIPT_MIXING' in rule_id or 'ACCURACY_ERROR' in rule_id or 'COMPLETENESS_ERROR' in rule_id or 'GRAMMAR_ERROR' in rule_id:
+                return 'Accuracy'
+            elif 'TERMINOLOGY_ERROR' in rule_id:
+                return 'Terminology'
+            elif 'PROFESSIONALISM_ERROR' in rule_id:
+                return 'Style'
+            else:
+                return 'Accuracy'  # Default for quality issues
+        
+        # Handle style guide rule findings
         if 'PUNCT' in rule_id or 'EXCL' in rule_id or 'COMMA' in rule_id:
             return 'Punctuation'
         elif 'TERM' in rule_id or 'GLOSS' in rule_id:

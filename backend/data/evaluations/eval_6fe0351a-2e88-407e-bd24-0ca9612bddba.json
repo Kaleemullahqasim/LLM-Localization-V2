@@ -1,0 +1,13 @@
+{
+  "job_id": "6fe0351a-2e88-407e-bd24-0ca9612bddba",
+  "kb_version": "2025.10.01-1724",
+  "rubric_version": "2025.10.01-1724",
+  "model_prompt_version": "1.0.0",
+  "final_score": 100,
+  "findings": [],
+  "by_macro": {},
+  "source_text": "what is your name and how old are you?\n",
+  "target_text": "你叫啥名字和你多大？",
+  "locale": "zh-CN",
+  "created_at": "2025-10-01 09:27:56.300720"
+}

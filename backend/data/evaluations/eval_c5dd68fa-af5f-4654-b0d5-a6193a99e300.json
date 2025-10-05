@@ -1,0 +1,13 @@
+{
+  "job_id": "c5dd68fa-af5f-4654-b0d5-a6193a99e300",
+  "kb_version": "2025.10.01-1724",
+  "rubric_version": "2025.10.01-1724",
+  "model_prompt_version": "1.0.0",
+  "final_score": 100,
+  "findings": [],
+  "by_macro": {},
+  "source_text": "hi how are you?",
+  "target_text": "您好， 怎样？",
+  "locale": "zh-CN",
+  "created_at": "2025-10-01 09:25:48.276167"
+}

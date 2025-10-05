@@ -1,0 +1,114 @@
+Rule ID,Macro Class,Micro Class,Rule Text,Severity,Weight,Section
+ZH-CN-000-D07C746D,Terminology,Style,Avoid ambiguities in translations.,Major,4,1 > 1
+ZH-CN-001-4E21B084,Terminology,Style,Maintain a unified style across translations.,Major,4,1 > 1
+ZH-CN-002-0C0BB037,Terminology,Style,Understand and address expectations for translations.,Major,4,1 > 1
+ZH-CN-003-E341F84E,Style,Style,Do not treat the guide as a complete list of grammar rules.,Major,1,1 > 1
+ZH-CN-004-FBDA7888,Terminology,Style,"Focus on ambiguities, customization, frequent errors, and problematic issues in translations.",Major,4,1 > 1
+ZH-CN-005-D0CEDFC6,Punctuation,Punctuation,"Use full-width punctuation for hyphenated terms (e.g., �rst → first).",Major,2,1 > 3
+ZH-CN-006-B84E2C65,Terminology,Terminology,"Do not translate product names (e.g., JIRA).",Major,4,1 > 3
+ZH-CN-007-55972687,Terminology,Terminology,Do not translate product names.,Major,4,2 > 4
+ZH-CN-008-1F0433CF,Terminology,Style,Avoid using a negative or frightening tone in translations.,Major,4,2 > 4
+ZH-CN-009-3F520FBA,Terminology,Style,Use active voice in translations.,Major,4,2 > 4
+ZH-CN-010-6A6A862C,Standards,Style,"Localization should adapt the text to the target language, customs, and standards.",Major,3,2 > 4
+ZH-CN-011-AAA8E779,Style,Style,"When translating editorial content, aim to achieve the same results as in the original.",Major,1,2 > 4
+ZH-CN-012-84000270,Style,Punctuation,"When presented with a list of languages/countries not sorted alphabetically in the source, reorder the list items to place the target language first.",Minor,1,2 > 4
+ZH-CN-013-C97A4F84,Mechanics,Style,Headings and subheadings should be informative and descriptive.,Major,3,3 > 1 > 3
+ZH-CN-014-278C8BE8,Mechanics,Style,Headings and subheadings should highlight the most important concept or piece of information for merchants.,Major,3,3 > 1 > 3
+ZH-CN-015-78CFEECF,Style,Style,Headings and subheadings should help merchants understand what they’ll find in the section below.,Major,1,3 > 1 > 3
+ZH-CN-016-463E0B76,Style,Style,Headings and subheadings should be concise and scannable.,Major,1,3 > 1 > 3
+ZH-CN-017-4D4D4502,Style,Style,"Headings and subheadings should use simple, clear language.",Major,1,3 > 1 > 3
+ZH-CN-018-E1045E10,Style,Style,Headings and subheadings should keep to a single sentence.,Major,1,3 > 1 > 3
+ZH-CN-019-6D2E7B52,Punctuation,Punctuation,"Headings and subheadings should avoid using punctuation such as periods, commas, or semicolons.",Major,2,3 > 1 > 3
+ZH-CN-020-EDE06B9C,Terminology,Style,The translation should be crisp and appealing to the reader.,Minor,4,3 > 1 > 5 > 1
+ZH-CN-021-E0CDFAF8,Style,Style,Keep the subject line short and concise.,Minor,1,3 > 1 > 5 > 1
+ZH-CN-022-EED74C5F,Style,Style,Present tense is preferred. Only use future tense when referring to something that'll happen in the future.,Major,1,3 > 2 > 4
+ZH-CN-023-5BEF6CF1,Style,Style,"Use the right tone. An instructional, informal and direct tone is preferred.",Minor,1,3 > 2 > 4
+ZH-CN-024-95D77E78,Style,Style,Use contractions.,Major,1,3 > 2 > 4
+ZH-CN-025-F53EBDB9,Style,Style,Address the reader or user as “you.”,Major,1,3 > 2 > 4
+ZH-CN-026-415F9772,Terminology,Style,Use variable sentence structure in translation.,Major,4,3 > 2 > 4
+ZH-CN-027-98324940,Terminology,Style,Avoid long sentences in translation.,Major,4,3 > 2 > 4
+ZH-CN-028-A9C9BC9F,Style,Terminology,Avoid using more than two “的” in one sentence.,Major,1,3 > 2 > 4
+ZH-CN-029-FAC12CBC,Terminology,Accuracy,Legal translation must be 100% accurate and faithful to the original text.,Major,4,3 > 3
+ZH-CN-030-37FB238E,Terminology,Accuracy,The legal translator must ensure that the translated document conveys the same meaning as the original document.,Major,4,3 > 3
+ZH-CN-031-2385F960,Terminology,Terminology,The translator must be familiar with the legal systems and terminology of both the source and target languages.,Major,4,3 > 3
+ZH-CN-032-07E4FAC8,Legal,Style,The translator must be able to convey the intended meaning of the legal document in the cultural context of the target language.,Major,6,3 > 3
+ZH-CN-033-8183576A,Terminology,Style,Write shorter translations for captions. Prioritize conveying the original meaning and intent while keeping Shopify’s voice and values in mind.,Major,4,3 > 4
+ZH-CN-034-50D2C5FB,Mechanics,Punctuation,Observe character limit: refer to project-specific information if available or follow the length limits as stated.,Major,3,3 > 4
+ZH-CN-035-2E99933D,Style,Style,"Adjust caption length (duration) if needed, e.g., when there’s not enough time to read a caption in the target language.",Major,1,3 > 4
+ZH-CN-036-588D3A2C,Style,Terminology,Keep the verb conjugation / way of address as in the original wherever it makes sense.,Major,1,3 > 4
+ZH-CN-037-0E89D90F,Terminology,Terminology,"Contrary to English, Simplified Chinese has no verb conjugation, but tense must be reflected in the translation.",Major,4,3 > 4
+ZH-CN-038-813F685E,Style,Style,Text should match the actions/video displays presented in the video.,Major,1,3 > 4
+ZH-CN-039-827F9F4A,Style,Style,"Sometimes, change the sequence of sentences for readability. However, follow the sequence of the source when translating subtitles to keep consistency between text and video displays if possible.",Minor,1,3 > 4
+ZH-CN-040-F33FB5C4,Style,Style,"Avoid ending a sentence and starting a new one in the same subtitle, except for short sentences and instances where it makes sense to do so.",Minor,1,3 > 4
+ZH-CN-041-8A680510,Style,Style,"Use separate subtitles for each sentence, or several subtitles in case of long sentences.",Minor,1,3 > 4
+ZH-CN-042-5C89F6D3,Punctuation,Punctuation,"End subtitles at natural linguistic breakpoints: after punctuation marks, before conjunctions, before prepositions.",Major,2,3 > 4
+ZH-CN-043-404B6D51,Style,Punctuation,"The line break should not separate: a noun from an article, a noun from an adjective, a first name from a last name, a verb from a subject pronoun.",Major,1,3 > 4
+ZH-CN-044-80C363DE,Style,Terminology,Avoid creating acronyms.,Major,1,4 > 5
+ZH-CN-045-6FF53E32,Style,Style,"If you have to use an acronym, spell it out the first time you use it and follow with the acronym in brackets.",Major,1,4 > 5
+ZH-CN-046-C0DBB6A8,Style,Terminology,Internationally understood acronyms and abbreviations are acceptable.,Minor,1,4 > 5
+ZH-CN-047-8A86CD2F,Mechanics,Style,"If an English acronym is to be used throughout a text, the first time it occurs, follow this structure: [Acronym] (e.g., RTE).",Major,3,4 > 5
+ZH-CN-048-1613F4DF,Style,Capitalization,Do not capitalize Chinese characters.,Major,1,4 > 6
+ZH-CN-049-1419AC84,Mechanics,Capitalization,Capitalize English characters in proper nouns as per the original format.,Major,3,4 > 6
+ZH-CN-050-1D05C7CE,Terminology,Terminology,Translate job titles and team names in running text.,Major,4,4 > 7
+ZH-CN-051-4D5D7927,Terminology,Terminology,Do not translate job titles and team names in signatures.,Major,4,4 > 7
+ZH-CN-052-B2AB7251,Punctuation,Punctuation,"Avoid using punctuation such as periods, commas, or semicolons in translations.",Minor,2,4 > 8
+ZH-CN-053-AB40286A,Punctuation,Punctuation,Follow the source punctuation.,Minor,2,4 > 9
+ZH-CN-054-E8797B33,Punctuation,Punctuation,Do not add a period after single-word or noun phrase items in the translation.,Minor,2,4 > 9
+ZH-CN-055-37421B59,Style,Punctuation,"Use Chinese full stop at the end of a sentence, even when it ends with an English word, numeral or URL.",Major,1,4 > 10
+ZH-CN-056-A58F8114,Style,Punctuation,Avoid using a full stop at the end of a line in Chinese marketing headlines and subheads.,Minor,1,4 > 10
+ZH-CN-057-0B06FC83,Style,Style,"In creative advertising, a full stop at the end of a line may be acceptable as a graphic treatment or artistic consideration.",Minor,1,4 > 10
+ZH-CN-058-032D59E8,Punctuation,Punctuation,"If commas are used to separate keywords, always use single-byte commas because they function as operators.",Minor,2,4 > 15
+ZH-CN-059-9F795BB3,Style,Punctuation,"In Chinese, the em dash (—) should not be used as it looks the same as the Chinese character for 'one' (一).",Major,1,4 > 17 > 1
+ZH-CN-060-DF3ED32A,Punctuation,Punctuation,"If punctuation is needed in Chinese, use ( ), ：or en dash to emphasize the element.",Minor,2,4 > 17 > 1
+ZH-CN-061-B6336EFE,Standards,Punctuation,"As for the standard Chinese dash “——”, no space is needed.",Major,3,4 > 17 > 1
+ZH-CN-062-F275B193,Style,Punctuation,"If the single byte English dash is used in Chinese, it depends on context.",Minor,1,4 > 17 > 1
+ZH-CN-063-109D96F8,Style,Terminology,Understand the cultural context of both source and target audiences to avoid misunderstandings or potential offense.,Major,1,4 > 19
+ZH-CN-064-18C1B5FD,Style,Style,Consider the surrounding text when translating emojis to ensure they fit appropriately.,Major,1,4 > 19
+ZH-CN-065-FA82B070,Style,Style,Strive to preserve the emotional intent of the original emoji when translating.,Major,1,4 > 19
+ZH-CN-066-3A987915,Accuracy,Style,Use the most appropriate expressions in the target language to convey the intended meaning effectively.,Major,5,4 > 19
+ZH-CN-067-82313B35,Mechanics,Style,Dates must be rewritten according to Chinese style using YYYY 年 MM 月 DD 日 or YYYY 年 M 月 D 日.,Major,3,5 > 1
+ZH-CN-068-7822CC30,Mechanics,Style,Time format must use 'XXhXX' (24-hour clock) with single-byte colon (:) as separator.,Major,3,5 > 1
+ZH-CN-069-F222FF92,Terminology,Terminology,AM/PM must be translated to 上午 and 下午 respectively.,Major,4,5 > 1
+ZH-CN-070-86BC82B4,Style,Style,Always check project specific instructions for currency handling.,Minor,1,5 > 3
+ZH-CN-071-9BFD2995,Style,Terminology,"Currency symbols, values (roughly convert if not 1 to 1 with USD$), and currency codes must be localized.",Major,1,5 > 3
+ZH-CN-072-ADE88822,Terminology,Style,Always assess the context at hand against the definition when using approved terminology.,Major,4,6
+ZH-CN-073-04708CAA,Terminology,Style,Never follow the termbase blindly if a term is used in a different context.,Major,4,6
+ZH-CN-074-DECF076A,Terminology,Style,Use industry-standard terminology.,Major,4,6
+ZH-CN-075-EF9DD6BF,Style,Style,Follow spelling and capitalization of Shopify brand names as well as third-party brand names.,Major,1,6
+ZH-CN-076-0D7E18F1,Terminology,Style,"Shopify prefers descriptive names for its products. Verify there is no confusion with the corresponding common noun, especially when the term is capitalized.",Major,4,6
+ZH-CN-077-71AD1D69,Terminology,Style,"Product names are usually not translated, while feature names are.",Major,4,6
+ZH-CN-078-218FE54B,Terminology,Style,Refer to the Terminology guidelines for the localization of proper nouns.,Major,4,6
+ZH-CN-079-142BA887,Terminology,Style,Translators & reviewers must proactively raise terminology-related queries in the JIRA Language Forum.,Major,4,6
+ZH-CN-080-11E6E09A,Terminology,Style,Language Specialists must use QuickTerm and the Query Sheet to raise terminology queries from translators and themselves with the client.,Major,4,6
+ZH-CN-081-5E77F653,Terminology,Style,Enter a new term request in the Query Sheet and directly in QuickTerm whenever a new term or deviation from standard language is used in the source text.,Major,4,6
+ZH-CN-082-4F396BCC,Terminology,Style,"When a new or challenging term is solved in a language, share the outcome with all other languages.",Major,4,6
+ZH-CN-083-DF29B0F5,Terminology,Style,"Double-check terms marked as Legacy, in particular: product, plan, and program names.",Major,4,6
+ZH-CN-084-7A58B015,Terminology,Terminology,Shopify product names are Do Not Translate (DNT) terms.,Major,4,6 > 1
+ZH-CN-085-BDF5C313,Terminology,Terminology,Do not translate the name portion of an API.,Major,4,6 > 1
+ZH-CN-086-FBF50FA9,Style,Style,"Move around API, the part of the name indicating the category so as to conform to each target language’s grammatical rules.",Major,1,6 > 1
+ZH-CN-087-D831029F,Terminology,Style,Refer to the Terminology guidelines for the localization of proper nouns.,Minor,4,6 > 1
+ZH-CN-088-C2921722,Style,Style,Shopify can be occasionally omitted from the product name.,Minor,1,6 > 1
+ZH-CN-089-5D93A736,Style,Style,Always check Shopify’s latest TB.,Minor,1,6 > 1
+ZH-CN-090-F287C036,Terminology,Terminology,Do not translate third-party product names unless they are specified by Shopify.,Major,4,6 > 2
+ZH-CN-091-059E635C,Terminology,Terminology,"Trademarked names and registered trademarks should not be localized unless local laws require translation, and an approved translated form of the trademark is available.",Major,4,6 > 3
+ZH-CN-092-09D4D1E1,Style,Style,"For third-party trademarks, verify how the names are treated on the third party’s website.",Major,1,6 > 3
+ZH-CN-093-4958EE03,Punctuation,Style,Ask the question to the query sheet in case of doubt.,Major,2,6 > 3
+ZH-CN-094-3C9B9826,Terminology,Terminology,Text in curly brackets should not be translated unless otherwise instructed.,Major,4,7 > 1 > 1
+ZH-CN-095-3A754EBE,Terminology,Process,Check any project specific information regarding translation of curly bracketed text.,Minor,4,7 > 1 > 1
+ZH-CN-096-2CD748DD,Mechanics,Style,It is OK to move the placeholder around in curly bracketed text.,Minor,3,7 > 1 > 1
+ZH-CN-097-1CBBDD16,Terminology,Terminology,Text in angle brackets should not be translated unless otherwise instructed.,Major,4,7 > 1 > 2
+ZH-CN-098-8170ADC1,Terminology,Terminology,Text in square brackets should not be translated unless project-specific information or context indicates otherwise.,Minor,4,7 > 1 > 3
+ZH-CN-099-DA4EA744,Style,Punctuation,Do not add spaces between the ending square bracket of the anchor text and the round bracket of the URL.,Major,1,7 > 1 > 4
+ZH-CN-100-8B246B60,Style,Style,"UI texts should be clear, concise, and consistent.",Minor,1,7 > 2
+ZH-CN-101-187CE4A9,Terminology,Style,"When encountering a UI item, check if it has been already translated to maintain consistency.",Minor,4,7 > 2
+ZH-CN-102-140EEED5,Terminology,Terminology,"If a UI had been already localized, then it should be available in the TM and that translation can be used.",Major,4,7 > 2 > 1
+ZH-CN-103-B53660FE,Style,Terminology,"If you do not find the UI item in the Admin TM, then it hasn't been localized yet (it might belong to an app or software that has not been localized).",Major,1,7 > 2 > 1
+ZH-CN-104-14A48867,Terminology,Style,"In Help projects, use the bilingual format <possible tag>English<\possible tag> (Translation) to refer to the correct English UI.",Minor,4,7 > 2 > 1
+ZH-CN-105-651F8EB3,Style,Style,"When translating UI options, distinguish buttons from CTA links.",Major,1,7 > 2 > 1
+ZH-CN-106-0AAFB30C,Style,Style,Buttons: Omit articles and unnecessary pronouns to reduce characters in the button text.,Major,1,7 > 2 > 1
+ZH-CN-107-D049B0EF,Style,Style,CTA links: Use articles in order to improve the readability and naturalness of the sentence. Omit articles only when reducing the length of the string.,Minor,1,7 > 2 > 1
+ZH-CN-108-F1ADB6FD,Style,Punctuation,"As a general rule, don’t use quotation marks to refer to a UI option.",Major,1,7 > 2 > 1
+ZH-CN-109-99B75A88,Terminology,Style,Capitalization is not relevant for Simplified Chinese. Pay attention to the correct capitalization of terms left in English.,Minor,4,7 > 2 > 1
+ZH-CN-110-9C72CE3A,Punctuation,Style,"Buttons and UI options are written in the infinitive form (command actions, button names and links).",Major,2,7 > 2 > 1
+ZH-CN-111-19443FAE,Terminology,Punctuation,Do not insert additional line breaks into translation (in Smartling displayed as �).,Major,4,7 > 5
+ZH-CN-112-8CC1007B,Style,Style,"If there is a line break in the suggestion from the TM and there are no line breaks in the source, delete that additional line break.",Major,1,7 > 5
